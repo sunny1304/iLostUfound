@@ -6,10 +6,10 @@ class CreateLostItems < ActiveRecord::Migration
       t.string :cell
       t.string :lost_item
       t.string :lost_location
-      t.datetime :lost_date
+      t.string :lost_date
       t.string :lost_item_pic
       t.string :email
-      t.string :additional_contct
+      t.string :additional_contact
 
       t.timestamps
     end

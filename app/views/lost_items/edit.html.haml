@@ -1,4 +1,7 @@
-- model_class = LostItem
-.page-header
-  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
-= render :partial => "form"
+%h1 Editing lost_item
+
+= render 'form'
+
+= link_to 'Show', @lost_item
+\|
+= link_to 'Back', lost_items_path

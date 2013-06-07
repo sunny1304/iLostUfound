@@ -1,40 +1,37 @@
-= form_for @lost_item, :html => { :class => 'form-horizontal' } do |f|
-  .control-group
-    = f.label :name, :class => 'control-label'
-    .controls
-      = f.text_field :name, :class => 'text_field'
-  .control-group
-    = f.label :address, :class => 'control-label'
-    .controls
-      = f.text_field :address, :class => 'text_field'
-  .control-group
-    = f.label :cell, :class => 'control-label'
-    .controls
-      = f.text_field :cell, :class => 'text_field'
-  .control-group
-    = f.label :lost_item, :class => 'control-label'
-    .controls
-      = f.text_field :lost_item, :class => 'text_field'
-  .control-group
-    = f.label :lost_location, :class => 'control-label'
-    .controls
-      = f.text_field :lost_location, :class => 'text_field'
-  .control-group
-    = f.label :lost_date, :class => 'control-label'
-    .controls
-      = f.datetime_select :lost_date, :class => 'datetime_select'
-  .control-group
-    = f.label :lost_item_pic, :class => 'control-label'
-    .controls
-      = f.file_field :lost_item_pic, :class => 'text_field'
-  .control-group
-    = f.label :email, :class => 'control-label'
-    .controls
-      = f.text_field :email, :class => 'text_field'
-  .control-group
-    = f.label :additional_contct, :class => 'control-label'
-    .controls
-      = f.text_field :additional_contct, :class => 'text_field'
-  .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), lost_items_path, :class => 'btn'
+= form_for @lost_item do |f|
+  - if @lost_item.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@lost_item.errors.count, "error")} prohibited this lost_item from being saved:"
+      %ul
+        - @lost_item.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :cell
+    = f.text_field :cell
+  .field
+    = f.label :lost_item
+    = f.text_field :lost_item
+  .field
+    = f.label :lost_location
+    = f.text_field :lost_location
+  .field
+    = f.label :lost_date
+    = f.text_field :lost_date
+  .field
+    = f.label :lost_item_pic
+    = f.file_field :lost_item_pic
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :additional_contact
+    = f.text_field :additional_contact
+  .actions
+    = f.submit 'Save'

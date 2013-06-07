@@ -1,45 +1,33 @@
-- model_class = LostItem
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
+%p#notice= notice
 
 %p
-  %strong= model_class.human_attribute_name(:name) + ':'
-  %br
+  %b Name:
   = @lost_item.name
 %p
-  %strong= model_class.human_attribute_name(:address) + ':'
-  %br
+  %b Address:
   = @lost_item.address
 %p
-  %strong= model_class.human_attribute_name(:cell) + ':'
-  %br
+  %b Cell:
   = @lost_item.cell
 %p
-  %strong= model_class.human_attribute_name(:lost_item) + ':'
-  %br
+  %b Lost item:
   = @lost_item.lost_item
 %p
-  %strong= model_class.human_attribute_name(:lost_location) + ':'
-  %br
+  %b Lost location:
   = @lost_item.lost_location
 %p
-  %strong= model_class.human_attribute_name(:lost_date) + ':'
-  %br
+  %b Lost date:
   = @lost_item.lost_date.strftime("%d %B, %Y")
-%p{:style => "width:200px;height:200px;overflow:hidden;"}
-  %strong= model_class.human_attribute_name(:lost_item_pic) + ':'
-  %br
-  = image_tag @lost_item.lost_item_pic.url
+%p{:style => "width:200px;height:200px;overflow:hidden"}
+  %b Lost item pic:
+  = @lost_item.lost_item_pic.url
 %p
-  %strong= model_class.human_attribute_name(:email) + ':'
-  %br
+  %b Email:
   = @lost_item.email
 %p
-  %strong= model_class.human_attribute_name(:additional_contct) + ':'
-  %br
-  = @lost_item.additional_contct
+  %b Additional contact:
+  = @lost_item.additional_contact
 
-.form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), lost_items_path, :class => 'btn'
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_lost_item_path(@lost_item), :class => 'btn'
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), lost_item_path(@lost_item), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+= link_to 'Edit', edit_lost_item_path(@lost_item)
+\|
+= link_to 'Back', lost_items_path

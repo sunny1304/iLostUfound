@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-ILostUfound::Application.config.secret_token = 'fc4ade23bc1a80b61edc5c09ec6aa5799f17a5e657b8ae191ccfb80aab9b8da7accf62e0658b615a222a099210ea0055a1a7c89648130218cf76f804e7c57098'
+ILostUfound::Application.config.secret_token = '1faf9dbb48ccb0e72271f1f0d045a5cffcd08bc9ba44f32ef172bff0610515eb3760ae2892833bf238c4155e1eac710c7224ff8e9e0a280eadf52b62c8c6e048'

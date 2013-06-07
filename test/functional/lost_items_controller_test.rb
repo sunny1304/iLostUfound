@@ -18,7 +18,7 @@ class LostItemsControllerTest < ActionController::TestCase
 
   test "should create lost_item" do
     assert_difference('LostItem.count') do
-      post :create, lost_item: { additional_contct: @lost_item.additional_contct, address: @lost_item.address, cell: @lost_item.cell, email: @lost_item.email, lost_date: @lost_item.lost_date, lost_item: @lost_item.lost_item, lost_item_pic: @lost_item.lost_item_pic, lost_location: @lost_item.lost_location, name: @lost_item.name }
+      post :create, lost_item: { additional_contact: @lost_item.additional_contact, address: @lost_item.address, cell: @lost_item.cell, email: @lost_item.email, lost_date: @lost_item.lost_date, lost_item: @lost_item.lost_item, lost_item_pic: @lost_item.lost_item_pic, lost_location: @lost_item.lost_location, name: @lost_item.name }
     end
 
     assert_redirected_to lost_item_path(assigns(:lost_item))
@@ -35,7 +35,7 @@ class LostItemsControllerTest < ActionController::TestCase
   end
 
   test "should update lost_item" do
-    put :update, id: @lost_item, lost_item: { additional_contct: @lost_item.additional_contct, address: @lost_item.address, cell: @lost_item.cell, email: @lost_item.email, lost_date: @lost_item.lost_date, lost_item: @lost_item.lost_item, lost_item_pic: @lost_item.lost_item_pic, lost_location: @lost_item.lost_location, name: @lost_item.name }
+    put :update, id: @lost_item, lost_item: { additional_contact: @lost_item.additional_contact, address: @lost_item.address, cell: @lost_item.cell, email: @lost_item.email, lost_date: @lost_item.lost_date, lost_item: @lost_item.lost_item, lost_item_pic: @lost_item.lost_item_pic, lost_location: @lost_item.lost_location, name: @lost_item.name }
     assert_redirected_to lost_item_path(assigns(:lost_item))
   end
 

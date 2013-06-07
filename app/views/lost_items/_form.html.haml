@@ -1,0 +1,40 @@
+= form_for @lost_item, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'text_field'
+  .control-group
+    = f.label :address, :class => 'control-label'
+    .controls
+      = f.text_field :address, :class => 'text_field'
+  .control-group
+    = f.label :cell, :class => 'control-label'
+    .controls
+      = f.text_field :cell, :class => 'text_field'
+  .control-group
+    = f.label :lost_item, :class => 'control-label'
+    .controls
+      = f.text_field :lost_item, :class => 'text_field'
+  .control-group
+    = f.label :lost_location, :class => 'control-label'
+    .controls
+      = f.text_field :lost_location, :class => 'text_field'
+  .control-group
+    = f.label :lost_date, :class => 'control-label'
+    .controls
+      = f.datetime_select :lost_date, :class => 'datetime_select'
+  .control-group
+    = f.label :lost_item_pic, :class => 'control-label'
+    .controls
+      = f.file_field :lost_item_pic, :class => 'text_field'
+  .control-group
+    = f.label :email, :class => 'control-label'
+    .controls
+      = f.text_field :email, :class => 'text_field'
+  .control-group
+    = f.label :additional_contct, :class => 'control-label'
+    .controls
+      = f.text_field :additional_contct, :class => 'text_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), lost_items_path, :class => 'btn'

@@ -2,31 +2,31 @@
 
 %p
   %b Name:
-  = @lost_item.name
+  = @lost_item.name if @lost_item.name.present?
 %p
   %b Address:
-  = @lost_item.address
+  = @lost_item.address if @lost_item.address.present?
 %p
   %b Cell:
-  = @lost_item.cell
+  = @lost_item.cell if @lost_item.cell.present?
 %p
   %b Lost item:
-  = @lost_item.lost_item
+  = @lost_item.lost_item if @lost_item.lost_item.present?
 %p
   %b Lost location:
-  = @lost_item.lost_location
+  = @lost_item.lost_location if @lost_item.lost_location.present?
 %p
   %b Lost date:
-  = @lost_item.lost_date.strftime("%d %B, %Y")
+  = @lost_item.lost_date.strftime("%d %B, %Y") if @lost_item.lost_date.present?
 %p{:style => "width:200px;height:200px;overflow:hidden"}
   %b Lost item pic:
-  = @lost_item.lost_item_pic.url
+  = @lost_item.lost_item_pic.url if @lost_item.lost_item_pic.present?
 %p
   %b Email:
-  = @lost_item.email
+  = @lost_item.email if @lost_item.email.present?
 %p
   %b Additional contact:
-  = @lost_item.additional_contact
+  = @lost_item.additional_contact if @lost_item.additional_contact.present? 
 
 = link_to 'Edit', edit_lost_item_path(@lost_item)
 \|

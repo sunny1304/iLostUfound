@@ -11,7 +11,7 @@
     = f.text_field :name
   .field
     = f.label :address
-    = f.text_field :address
+    = f.text_area :address, :rows => 5
   .field
     = f.label :cell
     = f.text_field :cell
@@ -20,7 +20,7 @@
     = f.text_field :lost_item
   .field
     = f.label :lost_location
-    = f.text_field :lost_location
+    = f.text_area :lost_location, :rows => 5
   .field
     = f.label :lost_date
     = f.text_field :lost_date
@@ -32,6 +32,41 @@
     = f.text_field :email
   .field
     = f.label :additional_contact
-    = f.text_field :additional_contact
+    = f.text_area :additional_contact, :rows => 5
   .actions
     = f.submit 'Save'
+
+
+:javascript
+  $(function(){
+    $("#lost_item_lost_date").datepicker({dateFormat: 'dd-mm-yy'});
+
+    $("#new_lost_item").isHappy({
+      fields : {
+        "#lost_item_name" :{
+          required : true,
+          message  : "You must enter your name"  
+        },
+        "#lost_item_address" :{
+          required : true,
+          message  : "You must give your address"
+        },
+        "#lost_item_cell" :{
+          required : true,
+          message  : "You must give your cell no"
+        },
+        "#lost_item_lost_item" :{
+          required : true,
+          message  : "You must tell what you have lost"
+        },
+        "#lost_item_lost_location" :{
+          required :true,
+          message  : "You must tell where you have lost your item"
+        },
+        "#lost_item_lost_date" :{
+          required : true,
+          message  : "You must tell when you lost the item"
+        }
+      }
+    });
+  });

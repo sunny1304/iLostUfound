@@ -44,6 +44,7 @@ class LostItemsController < ApplicationController
 
     respond_to do |format|
       if @lost_item.save
+        # LostFound.lost_notification(@lost_item).deliver
         format.html { redirect_to @lost_item, notice: 'Lost item was successfully created.' }
         format.json { render json: @lost_item, status: :created, location: @lost_item }
       else

@@ -1,4 +1,4 @@
-%h1 Listing lost_items
+%h3 Reported Lost Items
 
 / %table
 /   %tr
@@ -34,6 +34,7 @@
   - if @lost_items.present?
     - @lost_items.each do |lost_item|
       = link_to "#{lost_item.name unless lost_item.name.nil?} has lost #{check_vowel(lost_item.lost_item)} #{process_item_name(lost_item.lost_item) unless lost_item.lost_item.nil?} near #{lost_item.lost_location} at #{lost_item.lost_date.strftime('%d %B, %Y') unless lost_item.lost_date.nil?}", lost_item_path(lost_item.id)
+      %br/
   - else
     No Lost Item has been reported yet.    
 

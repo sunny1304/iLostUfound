@@ -20,7 +20,7 @@
   = @found_item.found_date.strftime("%d %B, %Y") unless @found_item.found_date.nil?
 %p{:style => "width:200px;height:200px;overflow:hidden"}
   %b Found item pic:
-  = image_tag @found_item.found_item_pic.url unless @found_item.found_item_pic.nil?
+  = image_tag @found_item.found_item_pic.url unless @found_item.found_item_pic.blank?
 %p
   %b Email:
   = @found_item.email unless @found_item.email.nil?

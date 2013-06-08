@@ -1,4 +1,4 @@
-%h1 Listing found_items
+%h3 Reported Found Items
 
 / %table
 /   %tr
@@ -30,10 +30,11 @@
 /       %td= link_to 'Edit', edit_found_item_path(found_item)
 /       %td= link_to 'Destroy', found_item, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%div.index
+%div.found_index
   - if @found_items.present?
     - @found_items.each do |found_item|
-      = link_to "#{found_item.name unless found_item.name.nil?} has found #{check_vowel(found_item.found_item)} #{process_item_name(found_item.found_item) unless found_item.found_item.nil?} near #{found_item.found_location} at #{found_item.found_date.strftime('%d %B, %Y') unless found_item.found_date.nil?}", found_item_path(found_item.id)
+      %div{:class=> "found_item",:id => "found_item_#{found_item.id}"}= link_to "#{found_item.name unless found_item.name.nil?} has found #{check_vowel(found_item.found_item)} #{process_item_name(found_item.found_item) unless found_item.found_item.nil?} near #{found_item.found_location} at #{found_item.found_date.strftime('%d %B, %Y') unless found_item.found_date.nil?}", found_item_path(found_item.id)
+      %br/
   - else
     No found Item has been reported yet.    
 

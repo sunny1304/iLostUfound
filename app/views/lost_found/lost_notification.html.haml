@@ -1,0 +1,9 @@
+!!!
+%html
+	%head
+		%meta{:content => "text/html;charset=UTF-8", 'http-equiv'=> "Content-Type"}
+	%body
+		%p
+			Hello #{@lost_item.name},
+			Thank you for reporting your lost Item.
+			Here is your detailed report : #{lost_item_path(@lost_item.id)}

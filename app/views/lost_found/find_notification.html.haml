@@ -1,0 +1,9 @@
+!!!
+%html
+	%head
+		%meta{:content => "text/html;charset=UTF-8", 'http-equiv'=> "Content-Type"}
+	%body
+		%p
+			Hello #{@found_item.name},
+			Thank you for reporting a found Item.
+			Here is your detailed report : #{found_item_path(@found_item.id)}

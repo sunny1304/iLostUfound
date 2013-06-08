@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require happy
+//= require lost_items
+//= require jquery.fancybox.pack
 

@@ -20,8 +20,7 @@
   = @found_item.found_date.strftime("%d %B, %Y") unless @found_item.found_date.blank?
 %p{:style => "width:200px;height:200px;overflow:hidden"}
   %b Found item pic:
-  - if @found_item.found_item_pic.present?
-    = link_to(image_tag(@found_item.found_item_pic.url),@found_item.found_item_pic.url)
+  = link_to (image_tag (@found_item.found_item_pic.url)),  @found_item.found_item_pic.url, :class => "fb" if @found_item.found_item_pic.present?
 %p
   %b Email:
   = @found_item.email unless @found_item.email.blank?

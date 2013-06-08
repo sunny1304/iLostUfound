@@ -2,31 +2,32 @@
 
 %p
   %b Name:
-  = @found_item.name unless @found_item.name.nil?
+  = @found_item.name unless @found_item.name.blank?
 %p
   %b Address:
-  = @found_item.address unless @found_item.address.nil?
+  = @found_item.address unless @found_item.address.blank?
 %p
   %b Cell:
-  = @found_item.cell unless @found_item.cell.nil?
+  = @found_item.cell unless @found_item.cell.blank?
 %p
   %b Found item:
-  = @found_item.found_item unless @found_item.found_item.nil?
+  = @found_item.found_item unless @found_item.found_item.blank?
 %p
   %b Found location:
-  = @found_item.found_location unless @found_item.found_location.nil?
+  = @found_item.found_location unless @found_item.found_location.blank?
 %p
   %b Found date:
-  = @found_item.found_date.strftime("%d %B, %Y") unless @found_item.found_date.nil?
+  = @found_item.found_date.strftime("%d %B, %Y") unless @found_item.found_date.blank?
 %p{:style => "width:200px;height:200px;overflow:hidden"}
   %b Found item pic:
-  = image_tag @found_item.found_item_pic.url unless @found_item.found_item_pic.blank?
+  - if @found_item.found_item_pic.present?
+    = link_to(image_tag(@found_item.found_item_pic.url),@found_item.found_item_pic.url)
 %p
   %b Email:
-  = @found_item.email unless @found_item.email.nil?
+  = @found_item.email unless @found_item.email.blank?
 %p
   %b Additional contact:
-  = @found_item.additional_contact unless @found_item.additional_contact.nil?
+  = @found_item.additional_contact unless @found_item.additional_contact.blank?
 %div
   = image_tag "http://maps.google.com/maps/api/staticmap?size=300x250&sensor=true&zoom=16&markers=#{@found_item.latitude}%2c#{@found_item.longitude}"   
 

@@ -23,7 +23,8 @@
   = @lost_item.lost_date.strftime("%d %B, %Y") if @lost_item.lost_date.present?
 %p{:style => "width:200px;height:200px;overflow:hidden"}
   %b Lost item pic:
-  = image_tag @lost_item.lost_item_pic.url if @lost_item.lost_item_pic.present?
+  - if @lost_item.lost_item_pic.present?
+    = link_to(image_tag(@lost_item.lost_item_pic.url),@lost_item.lost_item_pic.url)
 %p
   %b Email:
   = @lost_item.email if @lost_item.email.present?

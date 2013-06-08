@@ -23,7 +23,7 @@
   = @lost_item.lost_date.strftime("%d %B, %Y") if @lost_item.lost_date.present?
 %p{:style => "width:200px;height:200px;overflow:hidden"}
   %b Lost item pic:
-  = @lost_item.lost_item_pic.url if @lost_item.lost_item_pic.present?
+  = image_tag @lost_item.lost_item_pic.url if @lost_item.lost_item_pic.present?
 %p
   %b Email:
   = @lost_item.email if @lost_item.email.present?
@@ -32,7 +32,7 @@
   = @lost_item.additional_contact if @lost_item.additional_contact.present? 
 
 %div
-  = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@lost_item.latitude}%2c#{@lost_item.longitude}"  
+  = image_tag "http://maps.google.com/maps/api/staticmap?size=300x250&sensor=true&zoom=16&markers=#{@lost_item.latitude}%2c#{@lost_item.longitude}" 
 
 = link_to 'Edit', edit_lost_item_path(@lost_item), :class => 'btn'
 \|

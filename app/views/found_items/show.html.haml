@@ -1,0 +1,35 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @found_item.name unless @found_item.name.nil?
+%p
+  %b Address:
+  = @found_item.address unless @found_item.address.nil?
+%p
+  %b Cell:
+  = @found_item.cell unless @found_item.cell.nil?
+%p
+  %b Found item:
+  = @found_item.found_item unless @found_item.found_item.nil?
+%p
+  %b Found location:
+  = @found_item.found_location unless @found_item.found_location.nil?
+%p
+  %b Found date:
+  = @found_item.found_date.strftime("%d %B, %Y") unless @found_item.found_date.nil?
+%p{:style => "width:200px;height:200px;overflow:hidden"}
+  %b Found item pic:
+  = image_tag @found_item.found_item_pic.url unless @found_item.found_item_pic.nil?
+%p
+  %b Email:
+  = @found_item.email unless @found_item.email.nil?
+%p
+  %b Additional contact:
+  = @found_item.additional_contact unless @found_item.additional_contact.nil?
+%div
+  = image_tag "http://maps.google.com/maps/api/staticmap?size=300x250&sensor=true&zoom=16&markers=#{@found_item.latitude}%2c#{@found_item.longitude}"   
+
+= link_to 'Edit', edit_found_item_path(@found_item)
+\|
+= link_to 'Back', found_items_path

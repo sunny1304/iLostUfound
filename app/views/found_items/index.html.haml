@@ -1,0 +1,42 @@
+%h1 Listing found_items
+
+/ %table
+/   %tr
+/     %th Name
+/     %th Address
+/     %th Cell
+/     %th Found item
+/     %th Found location
+/     %th Found date
+/     %th Found item pic
+/     %th Email
+/     %th Additional contact
+/     %th
+/     %th
+/     %th
+
+/   - @found_items.each do |found_item|
+/     %tr
+/       %td= found_item.name
+/       %td= found_item.address
+/       %td= found_item.cell
+/       %td= found_item.found_item
+/       %td= found_item.found_location
+/       %td= found_item.found_date
+/       %td= found_item.found_item_pic
+/       %td= found_item.email
+/       %td= found_item.additional_contact
+/       %td= link_to 'Show', found_item
+/       %td= link_to 'Edit', edit_found_item_path(found_item)
+/       %td= link_to 'Destroy', found_item, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%div.index
+  - if @found_items.present?
+    - @found_items.each do |found_item|
+      = link_to "#{found_item.name unless found_item.name.nil?} has found #{check_vowel(found_item.found_item)} #{found_item.found_item unless found_item.found_item.nil?} near #{found_item.found_location} at #{found_item.found_date.strftime('%d %B, %Y') unless found_item.found_date.nil?}", found_item_path(found_item.id)
+  - else
+    No found Item has been reported yet.    
+
+%br
+
+= link_to 'New Found item', new_found_item_path

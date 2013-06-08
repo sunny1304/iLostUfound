@@ -1,3 +1,6 @@
+.page-header
+
+
 %p#notice= notice
 
 %p
@@ -31,6 +34,6 @@
 %div
   = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@lost_item.latitude}%2c#{@lost_item.longitude}"  
 
-= link_to 'Edit', edit_lost_item_path(@lost_item)
+= link_to 'Edit', edit_lost_item_path(@lost_item), :class => 'btn'
 \|
-= link_to 'Back', lost_items_path
+= link_to 'Back', lost_items_path, :class => 'btn'

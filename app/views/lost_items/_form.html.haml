@@ -1,4 +1,4 @@
-= form_for @lost_item do |f|
+= form_for @lost_item, :html => { :class => 'form-horizontal' } do |f|
   - if @lost_item.errors.any?
     #error_explanation
       %h2= "#{pluralize(@lost_item.errors.count, "error")} prohibited this lost_item from being saved:"
@@ -6,35 +6,53 @@
         - @lost_item.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :address
-    = f.text_area :address, :rows => 5
-  .field
-    = f.label :cell
-    = f.text_field :cell
-  .field
-    = f.label :lost_item
-    = f.text_field :lost_item
-  .field
-    = f.label :lost_location
-    = f.text_area :lost_location, :rows => 5
-  .field
-    = f.label :lost_date
-    = f.text_field :lost_date
-  .field
-    = f.label :lost_item_pic
-    = f.file_field :lost_item_pic
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :additional_contact
-    = f.text_area :additional_contact, :rows => 5
-  .actions
-    = f.submit 'Save'
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'text'
+
+  .control-group
+    = f.label :address, :class => 'control-label'
+    .controls
+      = f.text_area :address, :class => 'textarea', :rows => 5
+
+  .control-group
+    = f.label :cell, :class => 'control-label'
+    .controls
+      = f.text_field :cell, :class => 'text'
+
+  .control-group
+    = f.label :lost_item, :class => 'control-label'
+    .controls
+      = f.text_field :lost_item, :class => 'text'
+
+  .control-group
+    = f.label :lost_location, :class => 'control-label'
+    .controls
+      = f.text_area :lost_location, :class => 'textarea', :rows => 5
+
+  .control-group
+    = f.label :lost_date, :class => 'control-label'
+    .controls
+      = f.text_field :lost_date, :class => 'text'
+
+  .control-group
+    = f.label :lost_item_pic, :class => 'control-label'
+    .controls
+      = f.file_field :lost_item_pic, :class => 'file'
+
+  .control-group
+    = f.label :email, :class => 'control-label'
+    .controls
+      = f.text_field :email, :class => 'text'
+
+  .control-group
+    = f.label :additional_contact, :class => 'control-label'
+    .controls
+      = f.text_area :additional_contact, :class => 'textarea', :rows => 5
+
+  .form-actions
+    = f.submit 'Save', :class => 'btn btn-primary'
 
 
 :javascript

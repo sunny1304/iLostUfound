@@ -1,4 +1,7 @@
 ILostUfound::Application.routes.draw do
+  resources :found_items
+
+
   resources :lost_items
 
 

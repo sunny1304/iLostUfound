@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  address: MyString
+  cell: MyString
+  found_item: MyString
+  found_location: MyString
+  found_date: 2013-06-08 14:57:19
+  found_item_pic: MyString
+  email: MyString
+  additional_contact: MyString
+
+two:
+  name: MyString
+  address: MyString
+  cell: MyString
+  found_item: MyString
+  found_location: MyString
+  found_date: 2013-06-08 14:57:19
+  found_item_pic: MyString
+  email: MyString
+  additional_contact: MyString

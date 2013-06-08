@@ -1,0 +1,72 @@
+= form_for @found_item do |f|
+  - if @found_item.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@found_item.errors.count, "error")} prohibited this found_item from being saved:"
+      %ul
+        - @found_item.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :address
+    = f.text_area :address, :rows => 5
+  .field
+    = f.label :cell
+    = f.text_field :cell
+  .field
+    = f.label :found_item
+    = f.text_field :found_item
+  .field
+    = f.label :found_location
+    = f.text_area :found_location, :rows => 5
+  .field
+    = f.label :found_date
+    = f.text_field :found_date
+  .field
+    = f.label :found_item_pic
+    = f.file_field :found_item_pic
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :additional_contact
+    = f.text_area :additional_contact, :rows => 5
+  .actions
+    = f.submit 'Save'
+
+
+:javascript
+  $(function(){
+    $("#found_item_found_date").datepicker({dateFormat: 'dd-mm-yy'});
+
+    $("#new_found_item").isHappy({
+      fields : {
+        "#found_item_name" :{
+          required : true,
+          message  : "You must enter your name"  
+        },
+        "#found_item_address" :{
+          required : true,
+          message  : "You must give your address"
+        },
+        "#found_item_cell" :{
+          required : true,
+          message  : "You must give your cell no"
+        },
+        "#found_item_found_item" :{
+          required : true,
+          message  : "You must tell what you have found"
+        },
+        "#found_item_found_location" :{
+          required :true,
+          message  : "You must tell where you have found your item"
+        },
+        "#found_item_found_date" :{
+          required : true,
+          message  : "You must tell when you found the item"
+        }
+      }
+    });
+  });    

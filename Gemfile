@@ -24,6 +24,7 @@ gem 'jquery-rails'
 gem "haml", ">= 3.1.6"
 gem "haml-rails", ">= 0.3.4", :group => :development
 gem 'bootstrap-sass', '~> 2.3.1.3'
+gem 'geocoder', '~> 1.1.8'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

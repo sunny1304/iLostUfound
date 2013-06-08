@@ -28,6 +28,9 @@
   %b Additional contact:
   = @lost_item.additional_contact if @lost_item.additional_contact.present? 
 
+%div
+  = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@lost_item.latitude}%2c#{@lost_item.longitude}"  
+
 = link_to 'Edit', edit_lost_item_path(@lost_item)
 \|
 = link_to 'Back', lost_items_path

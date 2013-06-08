@@ -33,7 +33,7 @@
 %div.index
   - if @found_items.present?
     - @found_items.each do |found_item|
-      = link_to "#{found_item.name unless found_item.name.nil?} has found #{check_vowel(found_item.found_item)} #{found_item.found_item unless found_item.found_item.nil?} near #{found_item.found_location} at #{found_item.found_date.strftime('%d %B, %Y') unless found_item.found_date.nil?}", found_item_path(found_item.id)
+      = link_to "#{found_item.name unless found_item.name.nil?} has found #{check_vowel(found_item.found_item)} #{process_item_name(found_item.found_item) unless found_item.found_item.nil?} near #{found_item.found_location} at #{found_item.found_date.strftime('%d %B, %Y') unless found_item.found_date.nil?}", found_item_path(found_item.id)
   - else
     No found Item has been reported yet.    
 

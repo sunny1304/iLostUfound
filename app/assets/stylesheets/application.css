@@ -11,4 +11,6 @@
  *= require_self
  *= require jquery-ui
  *= require happy_js_custom
+ *= require bootstrap
+ *= require lost_items
  */

@@ -1,34 +1,41 @@
 %h1 Listing lost_items
 
-%table
-  %tr
-    %th Name
-    %th Address
-    %th Cell
-    %th Lost item
-    %th Lost location
-    %th Lost date
-    %th Lost item pic
-    %th Email
-    %th Additional contact
-    %th
-    %th
-    %th
+/ %table
+/   %tr
+/     %th Name
+/     %th Address
+/     %th Cell
+/     %th Lost item
+/     %th Lost location
+/     %th Lost date
+/     %th Lost item pic
+/     %th Email
+/     %th Additional contact
+/     %th
+/     %th
+/     %th
 
-  - @lost_items.each do |lost_item|
-    %tr
-      %td= lost_item.name
-      %td= lost_item.address
-      %td= lost_item.cell
-      %td= lost_item.lost_item
-      %td= lost_item.lost_location
-      %td= lost_item.lost_date
-      %td= lost_item.lost_item_pic
-      %td= lost_item.email
-      %td= lost_item.additional_contact
-      %td= link_to 'Show', lost_item
-      %td= link_to 'Edit', edit_lost_item_path(lost_item)
-      %td= link_to 'Destroy', lost_item, :method => :delete, :data => { :confirm => 'Are you sure?' }
+/   - @lost_items.each do |lost_item|
+/     %tr
+/       %td= lost_item.name
+/       %td= lost_item.address
+/       %td= lost_item.cell
+/       %td= lost_item.lost_item
+/       %td= lost_item.lost_location
+/       %td= lost_item.lost_date
+/       %td= lost_item.lost_item_pic
+/       %td= lost_item.email
+/       %td= lost_item.additional_contact
+/       %td= link_to 'Show', lost_item
+/       %td= link_to 'Edit', edit_lost_item_path(lost_item)
+/       %td= link_to 'Destroy', lost_item, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%div.index
+  - if @lost_items.present?
+    - @lost_items.each do |lost_item|
+      = link_to "#{lost_item.name} has lost a #{lost_item.lost_item} near #{lost_item.lost_location} at #{lost_item.lost_date.strftime('%d %B, %Y')}", lost_item_path(lost_item.id)
+  - else
+    No Lost Item has been reported yet.    
 
 %br
 

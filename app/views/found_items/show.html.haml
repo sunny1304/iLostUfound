@@ -2,31 +2,31 @@
 
 %p
   %b Name:
-  = @found_item.name unless @found_item.name.blank?
+  = @found_item.name if @found_item.name.present?
 %p
   %b Address:
-  = @found_item.address unless @found_item.address.blank?
+  = @found_item.address if @found_item.address.present?
 %p
   %b Cell:
-  = @found_item.cell unless @found_item.cell.blank?
+  = @found_item.cell if @found_item.cell.present?
 %p
   %b Found item:
-  = @found_item.found_item unless @found_item.found_item.blank?
+  = @found_item.found_item if @found_item.found_item.present?
 %p
   %b Found location:
-  = @found_item.found_location unless @found_item.found_location.blank?
+  = @found_item.found_location if @found_item.found_location.present?
 %p
   %b Found date:
-  = @found_item.found_date.strftime("%d %B, %Y") unless @found_item.found_date.blank?
+  = @found_item.found_date.strftime("%d %B, %Y") if @found_item.found_date.present?
 %p{:style => "width:200px;height:200px;overflow:hidden"}
   %b Found item pic:
   = link_to (image_tag (@found_item.found_item_pic.url)),  @found_item.found_item_pic.url, :class => "fb" if @found_item.found_item_pic.present?
 %p
   %b Email:
-  = @found_item.email unless @found_item.email.blank?
+  = @found_item.email if @found_item.email.present?
 %p
   %b Additional contact:
-  = @found_item.additional_contact unless @found_item.additional_contact.blank?
+  = @found_item.additional_contact if @found_item.additional_contact.present?
 %div
   = image_tag "http://maps.google.com/maps/api/staticmap?size=300x250&sensor=true&zoom=16&markers=#{@found_item.latitude}%2c#{@found_item.longitude}"   
 

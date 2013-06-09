@@ -4,8 +4,14 @@ gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+#mysql for development and postgresql for test and production
 
-gem 'mysql2'
+group :development do
+	gem 'mysql2'
+end
+group :test, :production do
+	gem 'pg'
+end
 
 
 # Gems used only for assets and not required
@@ -41,3 +47,7 @@ gem 'gmaps4rails'
 # To use debugger
 # gem 'debugger'
 gem 'carrierwave', '~> 0.8.0'
+
+group :test, :produciton do
+	gem 'thin'
+end

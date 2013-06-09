@@ -5,4 +5,5 @@ class LostItem < ActiveRecord::Base
   geocoded_by :lost_location
   after_validation :geocode, :if => :lost_location_changed?
   mount_uploader  :lost_item_pic, LostItemPicUploader
+
 end

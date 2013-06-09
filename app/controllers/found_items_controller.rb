@@ -41,6 +41,7 @@ class FoundItemsController < ApplicationController
   # POST /found_items.json
   def create
     @found_item = FoundItem.new(params[:found_item])
+    @found_item.ip_address = request.ip
 
     respond_to do |format|
       if @found_item.save

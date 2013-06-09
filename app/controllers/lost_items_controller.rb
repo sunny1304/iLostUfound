@@ -3,7 +3,11 @@ class LostItemsController < ApplicationController
   # GET /lost_items.json
   def index
     @lost_items = LostItem.all
-
+    # raise cookies.to_yaml
+    logger.debug cookies.inspect
+    logger.debug request.ip
+    logger.debug request.remote_ip
+    logger.debug request.uuid
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @lost_items }
@@ -41,6 +45,7 @@ class LostItemsController < ApplicationController
   # POST /lost_items.json
   def create
     @lost_item = LostItem.new(params[:lost_item])
+    @lost_item.ip_address = request.ip
 
     respond_to do |format|
       if @lost_item.save

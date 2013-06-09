@@ -21,7 +21,7 @@
 %p
   %b Lost date:
   = @lost_item.lost_date.strftime("%d %B, %Y") if @lost_item.lost_date.present?
-%p{:style => "width:200px;height:200px;overflow:hidden"}
+%p{:style => "width:200px;height:auto;overflow:hidden"}
   %b Lost item pic:
   = link_to (image_tag (@lost_item.lost_item_pic.url)),  @lost_item.lost_item_pic.url, :class => "fb" if @lost_item.lost_item_pic.present?
 %p

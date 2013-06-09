@@ -18,7 +18,7 @@
 %p
   %b Found date:
   = @found_item.found_date.strftime("%d %B, %Y") if @found_item.found_date.present?
-%p{:style => "width:200px;height:200px;overflow:hidden"}
+%p{:style => "width:200px;height:auto;overflow:hidden"}
   %b Found item pic:
   = link_to (image_tag (@found_item.found_item_pic.url)),  @found_item.found_item_pic.url, :class => "fb" if @found_item.found_item_pic.present?
 %p

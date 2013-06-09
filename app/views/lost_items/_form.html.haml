@@ -27,6 +27,11 @@
       = f.text_field :lost_item, :class => 'text'
 
   .control-group
+    = f.label :description, :class => 'control-label'
+    .controls
+      = f.text_area :description, :class => 'textarea', :rows => 5    
+
+  .control-group
     = f.label :lost_location, :class => 'control-label'
     .controls
       = f.text_area :lost_location, :class => 'textarea', :rows => 5

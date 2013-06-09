@@ -13,6 +13,9 @@
   %b Found item:
   = @found_item.found_item if @found_item.found_item.present?
 %p
+  %b Description:
+  = @found_item.description if @found_item.description.present?  
+%p
   %b Found location:
   = @found_item.found_location if @found_item.found_location.present?
 %p

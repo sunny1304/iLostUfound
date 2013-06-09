@@ -16,6 +16,9 @@
   %b Lost item:
   = @lost_item.lost_item if @lost_item.lost_item.present?
 %p
+  %b Description:
+  = @lost_item.description if @lost_item.description.present?  
+%p
   %b Lost location:
   = @lost_item.lost_location if @lost_item.lost_location.present?
 %p

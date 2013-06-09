@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130608092036) do
+ActiveRecord::Schema.define(:version => 20130609043527) do
 
   create_table "found_items", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20130608092036) do
     t.datetime "updated_at",         :null => false
     t.float    "longitude"
     t.float    "latitude"
+    t.string   "description"
   end
 
   create_table "lost_items", :force => true do |t|
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20130608092036) do
     t.datetime "lost_date"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "description"
   end
 
 end

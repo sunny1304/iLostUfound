@@ -27,6 +27,11 @@
       = f.text_field :found_item, :class => 'text'
 
   .control-group
+    = f.label :description, :class => 'control-label'
+    .controls
+      = f.text_area :description, :class => 'textarea', :rows => 5    
+
+  .control-group
     = f.label :found_location, :class => 'control-label'
     .controls
       = f.text_area :found_location, :class => 'textarea', :rows => 5

@@ -1,5 +1,5 @@
 class FoundItem < ActiveRecord::Base
-  attr_accessible :additional_contact, :address, :cell, :email, :found_date, :found_item, :found_item_pic, :found_location, :name,:longitude,:latitude
+  attr_accessible :additional_contact, :address, :cell, :email, :found_date, :found_item, :found_item_pic, :found_location, :name,:longitude,:latitude,:description
   validates_presence_of :name, :address, :cell, :found_item, :found_location, :found_date, :email
 
   geocoded_by :found_location

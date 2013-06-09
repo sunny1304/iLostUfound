@@ -3,11 +3,7 @@ class LostItemsController < ApplicationController
   # GET /lost_items.json
   def index
     @lost_items = LostItem.all
-    # raise cookies.to_yaml
-    logger.debug cookies.inspect
-    logger.debug request.ip
-    logger.debug request.remote_ip
-    logger.debug request.uuid
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @lost_items }

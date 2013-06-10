@@ -2,9 +2,10 @@ class FoundItemsController < ApplicationController
   # GET /found_items
   # GET /found_items.json
   def index
-    @found_items = FoundItem.all
+    @found_items = FoundItem.order('id').paginate(:page => params[:page],:per_page =>10)
 
     respond_to do |format|
+      format.js
       format.html # index.html.erb
       format.json { render json: @found_items }
     end

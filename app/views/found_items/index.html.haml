@@ -1,5 +1,8 @@
 %h3 Reported Found Items
-
+%em
+	%b= link_to 'Report a Found item', new_found_item_path
+%br/
+%br/
 / %table
 /   %tr
 /     %th Name
@@ -30,14 +33,6 @@
 /       %td= link_to 'Edit', edit_found_item_path(found_item)
 /       %td= link_to 'Destroy', found_item, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%div.found_index
-  - if @found_items.present?
-    - @found_items.each do |found_item|
-      %div{:class=> "found_item",:id => "found_item_#{found_item.id}"}= link_to "#{found_item.name unless found_item.name.blank?} has found #{check_vowel(found_item.found_item)} #{process_item_name(found_item.found_item) unless found_item.found_item.blank?} near #{found_item.found_location} at #{found_item.found_date.strftime('%d %B, %Y') unless found_item.found_date.blank?}", found_item_path(found_item.id)
-      %br/
-  - else
-    No found Item has been reported yet.    
 
-%br
+= spaghetti 'found_items',found_items_path
 
-= link_to 'New Found item', new_found_item_path

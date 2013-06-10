@@ -1,5 +1,8 @@
 %h3 Reported Lost Items
-
+%em 
+	%b= link_to 'Report a Lost item', new_lost_item_path
+%br/
+%br/
 / %table
 /   %tr
 /     %th Name
@@ -30,14 +33,4 @@
 /       %td= link_to 'Edit', edit_lost_item_path(lost_item)
 /       %td= link_to 'Destroy', lost_item, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%div.index
-  - if @lost_items.present?
-    - @lost_items.each do |lost_item|
-      %div{:class=> "lost_item",:id => "lost_item_#{lost_item.id}"}= link_to "#{lost_item.name unless lost_item.name.blank?} has lost #{check_vowel(lost_item.lost_item)} #{process_item_name(lost_item.lost_item) unless lost_item.lost_item.blank?} near #{lost_item.lost_location} at #{lost_item.lost_date.strftime('%d %B, %Y') unless lost_item.lost_date.blank?}", lost_item_path(lost_item.id)
-      %br/
-  - else
-    No Lost Item has been reported yet.    
-
-%br
-
-= link_to 'New Lost item', new_lost_item_path
+= spaghetti 'lost_items',lost_items_path

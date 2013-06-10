@@ -47,6 +47,8 @@ gem 'gmaps4rails'
 # To use debugger
 # gem 'debugger'
 gem 'carrierwave', '~> 0.8.0'
+gem 'will_paginate'
+gem 'spaghetti'
 
 group :test, :produciton do
 	gem 'thin'

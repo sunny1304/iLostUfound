@@ -16,4 +16,5 @@
 //= require happy
 //= require lost_items
 //= require jquery.fancybox.pack
+//= require spaghetti
 

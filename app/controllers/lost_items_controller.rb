@@ -2,9 +2,11 @@ class LostItemsController < ApplicationController
   # GET /lost_items
   # GET /lost_items.json
   def index
-    @lost_items = LostItem.all
+    # @lost_items = LostItem.all
+    @lost_items = LostItem.order('id').paginate(:page => params[:page],:per_page =>10)
     
     respond_to do |format|
+      format.js
       format.html # index.html.erb
       format.json { render json: @lost_items }
     end

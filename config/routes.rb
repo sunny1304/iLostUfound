@@ -1,4 +1,8 @@
 ILostUfound::Application.routes.draw do
+  get "search/lost"
+
+  get "search/found"
+
   # get "welcome/index"
 
   resources :found_items

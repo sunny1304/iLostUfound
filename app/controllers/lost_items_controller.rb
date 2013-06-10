@@ -3,7 +3,7 @@ class LostItemsController < ApplicationController
   # GET /lost_items.json
   def index
     # @lost_items = LostItem.all
-    @lost_items = LostItem.order('id').paginate(:page => params[:page],:per_page =>10)
+    @lost_items = LostItem.order('id').page(params[:page]).per(10)
     
     respond_to do |format|
       format.js

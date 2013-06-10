@@ -1,0 +1,11 @@
+= form_tag(search_lost_path,:method => :get,:remote => true) do
+	= label_tag "what are you looking for?"
+	= text_field_tag "lost_item"
+	= submit_tag "Submit"
+
+
+%div.lost_partial	
+	=# render :partial => "lost_item", :locals => {:lost_items => @lost_items}
+
+
+

@@ -20,4 +20,13 @@ class SearchController < ApplicationController
 
   def found
   end
+
+
+  def suggestion
+    if params[:id].present?
+      found_item = FoundItem.find(params[:id].to_i)
+      @suggestion_items = LostItem.where("(lost_item LIKE ? ) OR (lost_location LIKE ?)","%#{found_item.found_item}%", "%#{found_item.found_location}%")
+      @notice = params[:notice] if params[:notice].present?
+    end
+  end
 end

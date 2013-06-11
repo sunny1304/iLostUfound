@@ -3,6 +3,8 @@ ILostUfound::Application.routes.draw do
 
   get "search/found"
 
+  get "search/suggestion"
+
   # get "welcome/index"
 
   resources :found_items

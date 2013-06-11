@@ -63,7 +63,7 @@ class FoundItemsController < ApplicationController
 
     respond_to do |format|
       if @found_item.update_attributes(params[:found_item])
-        format.html { redirect_to @found_item, notice: 'Found item was successfully updated.' }
+        format.html { redirect_to :controller => 'search', :action => 'suggestion' ,:id => @found_item.id, notice: 'Found item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

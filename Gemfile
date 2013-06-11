@@ -48,13 +48,15 @@ gem 'gmaps4rails'
 # gem 'debugger'
 gem 'carrierwave', '~> 0.8.0'
 gem 'kaminari'
-gem 'sunspot_with_kaminari'
 gem 'spaghetti'
-gem 'sunspot_rails', '2.0.0'
-gem 'progress_bar'
+
 
 group :development do
 	gem 'sunspot_solr'
+	gem 'sunspot_with_kaminari'
+	gem 'sunspot_rails', '2.0.0'
+	gem 'progress_bar'
+
 end
 
 group :test, :produciton do

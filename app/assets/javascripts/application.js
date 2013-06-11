@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require happy
+//= require happy.methods
 //= require lost_items
 //= require jquery.fancybox.pack
 //= require spaghetti

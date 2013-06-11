@@ -64,7 +64,7 @@
   $(function(){
     $("#lost_item_lost_date").datepicker({dateFormat: 'dd-mm-yy'});
 
-    $("#new_lost_item").isHappy({
+    $(".form-horizontal").isHappy({
       fields : {
         "#lost_item_name" :{
           required : true,
@@ -88,7 +88,14 @@
         },
         "#lost_item_lost_date" :{
           required : true,
-          message  : "You must tell when you lost the item"
+          message  : "You must tell when you lost the item",
+          test     : function(val1){
+            var date_array = val1.split("-");
+            var date = new Date(date_array[2],(date_array[1]-1),date_array[0]);
+            var today = new Date();
+            if (date.getTime() > today.getTime()){return false;}
+            else {return true;}
+          }
         },
         "#lost_item_email" :{
           required : true,

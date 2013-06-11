@@ -62,9 +62,9 @@
 
 :javascript
   $(function(){
-    $("#found_item_found_date").datepicker({dateFormat: 'dd.mm.yy'});
+    $("#found_item_found_date").datepicker({dateFormat: 'dd-mm-yy'});
 
-    $("#new_found_item").isHappy({
+    $(".form-horizontal").isHappy({
       fields : {
         "#found_item_name" :{
           required : true,
@@ -90,7 +90,8 @@
           required : true,
           message  : "You must tell when you found the item",
           test     : function(val1){
-            var date_array = val1.split(".");
+            var date_array = val1.split("-");
+            var date_only = date_array[2].split("-")
             var date = new Date(date_array[2],(date_array[1]-1),date_array[0]);
             var today = new Date();
             if (date.getTime() > today.getTime()){return false;}

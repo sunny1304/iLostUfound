@@ -53,9 +53,9 @@ gem 'spaghetti'
 gem 'sunspot_rails', '2.0.0'
 gem 'progress_bar'
 
-# group :development do
-gem 'sunspot_solr'
-# end
+group :development do
+	gem 'sunspot_solr'
+end
 
 group :test, :produciton do
 	gem 'thin'

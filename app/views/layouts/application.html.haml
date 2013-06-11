@@ -23,8 +23,8 @@
                   %a{:href => "/lost_items"} Lost items
                 %li{:class => (controller.controller_name.eql?('found_items'))? "active" : "found_items" }
                   %a{:href => "/found_items"} Found items
-                %li
-                  %a{:href => "#"} Downloads
+                %li{:class => (controller.controller_name.eql?('search'))? "active" : "search" }
+                  %a{:href => "/search/lost"} Search Lost Items
                 %li
                   %a{:href => "#"} About
                 %li

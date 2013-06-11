@@ -1,8 +1,15 @@
 class SearchController < ApplicationController
   def lost
-  	if params[:lost_item].present?
-  		@lost_items = LostItem.where("lost_item ILIKE ?","%#{params[:lost_item]}%").page(params[:page]).per(10)
-  	end
+    if params[:search].present?
+      @search = LostItem.search do
+        fulltext params[:search]
+        paginate :page => params[:page], :per_page => 10
+      end
+
+      @lost_items = @search.results
+      # logger.debug "_________#{@search.inspect}_________"
+    end
+
   	respond_to do |format|
   		format.html #lost.html.haml
   		format.js

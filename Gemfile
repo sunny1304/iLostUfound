@@ -47,9 +47,15 @@ gem 'gmaps4rails'
 # To use debugger
 # gem 'debugger'
 gem 'carrierwave', '~> 0.8.0'
-# gem 'will_paginate'
 gem 'kaminari'
+gem 'sunspot_with_kaminari'
 gem 'spaghetti'
+gem 'sunspot_rails', '2.0.0'
+gem 'progress_bar'
+
+group :development do
+	gem 'sunspot_solr'
+end
 
 group :test, :produciton do
 	gem 'thin'

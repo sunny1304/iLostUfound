@@ -19,8 +19,16 @@ class SearchController < ApplicationController
   end
 
   def found
+    if params[:search].present?
+      search_term = params[:search].chomp
+      @found_items = FoundItem.where("(found_item ILIKE ?) OR (found_location ILIKE ?)","%#{search_term}%","%#{search_term}%").page(params[:page]).per(10)
+    end
+    respond_to do |format|
+      format.js
+      format.html #found.html.haml
+    end
   end
-
+  
 
   def suggestion
     if params[:id].present?

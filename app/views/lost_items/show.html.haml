@@ -23,7 +23,8 @@
   = @lost_item.lost_location if @lost_item.lost_location.present?
 %p
   %b Lost date:
-  = @lost_item.lost_date.strftime("%d %B, %Y") if @lost_item.lost_date.present?
+  =# @lost_item.lost_date.strftime("%d %B, %Y") if @lost_item.lost_date.present?
+  = time_tag(@lost_item.lost_date, :format => "%B %d, %Y")  if @lost_item.lost_date.present?
 %p{:style => "width:200px;height:auto;overflow:hidden"}
   %b Lost item pic:
   = link_to (image_tag (@lost_item.lost_item_pic.url)),  @lost_item.lost_item_pic.url, :class => "fb" if @lost_item.lost_item_pic.present?

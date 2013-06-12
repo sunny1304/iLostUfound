@@ -20,7 +20,8 @@
   = @found_item.found_location if @found_item.found_location.present?
 %p
   %b Found date:
-  = @found_item.found_date.strftime("%d %B, %Y") if @found_item.found_date.present?
+  =# @found_item.found_date.strftime("%d %B, %Y") if @found_item.found_date.present?
+  = time_tag(@found_item.found_date, :format => "%B %d, %Y") if @found_item.found_date.present?
 %p{:style => "width:200px;height:auto;overflow:hidden"}
   %b Found item pic:
   = link_to (image_tag (@found_item.found_item_pic.url)),  @found_item.found_item_pic.url, :class => "fb" if @found_item.found_item_pic.present?

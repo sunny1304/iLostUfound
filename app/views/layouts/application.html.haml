@@ -1,41 +1,15 @@
 !!!
 %html
   %head
-    %title iLostUfound
-    %meta{:charset => "utf-8"}
-    %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
-    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
-    = stylesheet_link_tag :application, :media => "all"
-    = javascript_include_tag :application
-    = csrf_meta_tags
+    = render 'partial/head'
 
   %body
     .container
-      .masthead
-        %h3.muted iLostUFound
-        .navbar
-          .navbar-inner
-            .container
-              %ul.nav
-                %li{:class => (controller.controller_name.eql?('welcome'))? "active" : "welcome" }
-                  %a{:href => "/"} Home
-                %li{:class => (controller.controller_name.eql?('lost_items'))? "active" : "lost_items" }
-                  %a{:href => "/lost_items"} Lost items
-                %li{:class => (controller.controller_name.eql?('found_items'))? "active" : "found_items" }
-                  %a{:href => "/found_items"} Found items
-                %li{:class => (controller.action_name.eql?('lost'))? "active" : "lost" }
-                  %a{:href => "/search/lost"} Search Lost Items
-                %li{:class => (controller.action_name.eql?('found')? "active" : "found")}
-                  %a{:href => "/search/found"}Search Founds
-                %li
-                  %a{:href => "#"} Contact
-        / /.navbar
+      = render 'partial/header'
       / Jumbotron
       .jumbotron
         = yield
-      %hr/
-      .footer
-        %p © iLostUfound 2013
+      = render 'partial/footer'
     / /container
 
 

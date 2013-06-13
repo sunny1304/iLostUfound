@@ -45,6 +45,7 @@ GEM
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (1.0.3)
+    eventmachine (1.0.3-x86-mingw32)
     execjs (1.4.0)
       multi_json (~> 1.0)
     fattr (2.2.1)
@@ -76,9 +77,11 @@ GEM
     mysql2 (0.3.11)
     mysql2 (0.3.11-x86-mingw32)
     nokogiri (1.5.9)
+    nokogiri (1.5.9-x86-mingw32)
     options (2.3.0)
       fattr
     pg (0.15.1)
+    pg (0.15.1-x86-mingw32)
     polyglot (0.3.3)
     pr_geohash (1.0.0)
     progress_bar (1.0.0)
@@ -143,8 +146,6 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (1.2.0)
-      coffee-rails
     tzinfo (0.3.37)
     uglifier (2.1.1)
       execjs (>= 0.3.0)
@@ -174,5 +175,4 @@ DEPENDENCIES
   sunspot_solr
   sunspot_with_kaminari
   thin
-  turbolinks
   uglifier (>= 1.0.3)

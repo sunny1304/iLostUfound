@@ -1,0 +1,19 @@
+.masthead
+  %h3.muted iLostUFound
+  .navbar
+    .navbar-inner
+      .container
+        %ul.nav
+          %li{:class => (controller.controller_name.eql?('welcome'))? "active" : "welcome" }
+            %a{:href => "/"} Home
+          %li{:class => (controller.controller_name.eql?('lost_items'))? "active" : "lost_items" }
+            %a{:href => "/lost_items"} Lost items
+          %li{:class => (controller.controller_name.eql?('found_items'))? "active" : "found_items" }
+            %a{:href => "/found_items"} Found items
+          %li{:class => (controller.action_name.eql?('lost'))? "active" : "lost" }
+            %a{:href => "/search/lost"} Search Lost Items
+          %li{:class => (controller.action_name.eql?('found')? "active" : "found")}
+            %a{:href => "/search/found"}Search Founds
+          %li
+            %a{:href => "#"} Contact
+  / /.navbar

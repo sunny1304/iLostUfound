@@ -49,6 +49,7 @@ gem 'gmaps4rails'
 gem 'carrierwave', '~> 0.8.0'
 gem 'kaminari'
 gem 'spaghetti'
+# gem 'tlsmail'
 
 group :development do
 	gem 'sunspot_solr'

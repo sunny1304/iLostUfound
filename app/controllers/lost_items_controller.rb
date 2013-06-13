@@ -64,6 +64,7 @@ class LostItemsController < ApplicationController
 
     respond_to do |format|
       if @lost_item.update_attributes(params[:lost_item])
+        LostFound.lost_notification(@lost_item).deliver
         format.html { redirect_to @lost_item, notice: 'Lost item was successfully updated.' }
         format.json { head :no_content }
       else

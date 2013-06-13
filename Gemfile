@@ -58,6 +58,6 @@ group :development do
 
 end
 
-group :test, :produciton do
+group :test,:production do
 	gem 'thin'
 end

@@ -71,7 +71,7 @@ ILostUfound::Application.configure do
       :address              => "smtp.gmail.com",
       :port                 => 587,
       :domain               => 'ilostufound.herokuapp.com',
-      :user_name            => 'sunny1304.ad@gmail.com',
+      :user_name            => 'sunny1304.AD@gmail.com',
       :password             => 'farhan1234',
       :authentication       => 'plain',
       :enable_starttls_auto => true  

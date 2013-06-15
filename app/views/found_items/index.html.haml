@@ -1,6 +1,9 @@
 %h3 Reported Found Items
 %em
-	%b= link_to 'Report a Found item', new_found_item_path
+- if user_signed_in?
+	%b= link_to 'Report a Found item', new_user_found_item_path(current_user)
+- else
+	%b= link_to 'Report a Found item', user_session_path	
 %br/
 %br/
 / %table

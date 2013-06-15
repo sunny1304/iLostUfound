@@ -7,6 +7,7 @@
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
     = stylesheet_link_tag :application, :media => "all"
     = javascript_include_tag :application
+    = javascript_include_tag :defaults
     = csrf_meta_tags
 
   %body
@@ -14,6 +15,10 @@
       = render 'shared/header'
       / Jumbotron
       .jumbotron
+        - if notice.present? 
+          %p.notice= notice
+        - if alert.present?  
+          %p.alert=  alert
         = yield
       = render 'shared/footer'
     / /container

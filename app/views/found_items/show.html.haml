@@ -1,4 +1,4 @@
-%p#notice= notice
+%p#notice=# notice
 
 %p
   %b Name:
@@ -34,6 +34,6 @@
 %div
   = image_tag "http://maps.google.com/maps/api/staticmap?size=300x250&sensor=true&zoom=16&markers=#{@found_item.latitude}%2c#{@found_item.longitude}"   
 
-= link_to 'Edit', edit_found_item_path(@found_item),:class => 'btn'
+= link_to 'Edit', edit_user_found_item_path(current_user,@found_item),:class => 'btn'
 \|
 = link_to 'Back', found_items_path, :class => 'btn'

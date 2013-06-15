@@ -5,4 +5,6 @@ class FoundItem < ActiveRecord::Base
   geocoded_by :found_location
   after_validation :geocode, :if => :found_location_changed?
   mount_uploader  :found_item_pic, FoundItemPicUploader
+
+  belongs_to :user
 end

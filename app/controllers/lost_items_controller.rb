@@ -1,9 +1,10 @@
 class LostItemsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index]
   # GET /lost_items
   # GET /lost_items.json
   def index
     # @lost_items = LostItem.all
-    @lost_items = LostItem.order('id').page(params[:page]).per(10)
+    @lost_items = LostItem.where("user_id IS NOT NULL").order('id').page(params[:page]).per(10)
     
     respond_to do |format|
       format.js
@@ -15,8 +16,8 @@ class LostItemsController < ApplicationController
   # GET /lost_items/1
   # GET /lost_items/1.json
   def show
+    # @lost_item = LostItem.where("id =? AND user_id =?",params[:id],params[:user_id])
     @lost_item = LostItem.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @lost_item }
@@ -26,7 +27,8 @@ class LostItemsController < ApplicationController
   # GET /lost_items/new
   # GET /lost_items/new.json
   def new
-    @lost_item = LostItem.new
+    # @lost_item = LostItem.new
+    @lost_item = current_user.lost_items.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,19 +38,25 @@ class LostItemsController < ApplicationController
 
   # GET /lost_items/1/edit
   def edit
-    @lost_item = LostItem.find(params[:id])
+    if user_lost_items.include?(params[:id].to_i)
+      @lost_item = current_user.lost_items.find(params[:id])
+    else
+      redirect_to lost_items_path,:notice => "You are not allowed to edit others report"
+      return
+    end
   end
 
   # POST /lost_items
   # POST /lost_items.json
   def create
-    @lost_item = LostItem.new(params[:lost_item])
+    @lost_item = current_user.lost_items.build(params[:lost_item])
     @lost_item.ip_address = request.ip
-
+    # @lost_item.user_id = current_user.id
+    logger.debug @lost_item.inspect
     respond_to do |format|
       if @lost_item.save
         # LostFound.lost_notification(@lost_item).deliver
-        format.html { redirect_to @lost_item, notice: 'Lost item was successfully created.' }
+        format.html { redirect_to user_lost_item_path(@lost_item),notice: 'Lost item was successfully created.' }
         format.json { render json: @lost_item, status: :created, location: @lost_item }
       else
         format.html { render action: "new" }
@@ -60,12 +68,12 @@ class LostItemsController < ApplicationController
   # PUT /lost_items/1
   # PUT /lost_items/1.json
   def update
-    @lost_item = LostItem.find(params[:id])
+    @lost_item = current_user.lost_items.find(params[:id])
 
     respond_to do |format|
       if @lost_item.update_attributes(params[:lost_item])
         # LostFound.lost_notification(@lost_item).deliver
-        format.html { redirect_to @lost_item, notice: 'Lost item was successfully updated.' }
+        format.html { redirect_to user_lost_item_path(current_user,@lost_item), notice: 'Lost item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -84,5 +92,9 @@ class LostItemsController < ApplicationController
       format.html { redirect_to lost_items_url }
       format.json { head :no_content }
     end
+  end
+
+  def user_lost_items
+    current_user.lost_items.collect(&:id)
   end
 end

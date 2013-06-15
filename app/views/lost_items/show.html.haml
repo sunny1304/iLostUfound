@@ -38,6 +38,6 @@
 %div
   = image_tag "http://maps.google.com/maps/api/staticmap?size=300x250&sensor=true&zoom=16&markers=#{@lost_item.latitude}%2c#{@lost_item.longitude}"
 
-= link_to 'Edit', edit_lost_item_path(@lost_item), :class => 'btn'
+= link_to 'Edit', edit_user_lost_item_path(@lost_item), :class => 'btn'
 \|
 = link_to 'Back', lost_items_path, :class => 'btn'

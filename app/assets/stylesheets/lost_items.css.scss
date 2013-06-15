@@ -79,3 +79,10 @@ body {
     }
   }
 }
+
+.nav-tabs > li > a, .nav-pills > li > a {
+    line-height: 60px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+

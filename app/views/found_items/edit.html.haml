@@ -3,6 +3,6 @@
 
 = render 'form'
 
-= link_to 'Show', @found_item,:class => 'btn'
+= link_to 'Show', user_found_item_path(current_user,@found_item),:class => 'btn'
 \|
 = link_to 'Back', found_items_path, :class => 'btn'

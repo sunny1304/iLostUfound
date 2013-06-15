@@ -1,4 +1,13 @@
 ILostUfound::Application.routes.draw do
+  devise_for :users
+  resources :users do 
+    resources :found_items
+    resources :lost_items
+  end
+  namespace :users do
+      root :to => 'welcome#index'
+  end
+
   get "search/lost"
 
   get "search/found"
@@ -7,10 +16,10 @@ ILostUfound::Application.routes.draw do
 
   # get "welcome/index"
 
-  resources :found_items
+  resources :found_items, :only => [:index]
 
 
-  resources :lost_items
+  resources :lost_items , :only => [:index]
 
 
   # The priority is based upon order of creation:

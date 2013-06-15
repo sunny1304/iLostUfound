@@ -9,7 +9,7 @@ class SearchController < ApplicationController
       # @lost_items = @search.results
       # # logger.debug "_________#{@search.inspect}_________"
 
-      @lost_items = LostItem.where("(lost_item ILIKE ?) OR (lost_location ILIKE ?)","%#{params[:search]}%","%#{params[:search]}%").page(params[:page]).per(10)
+      @lost_items = LostItem.where("(lost_item LIKE ?) OR (lost_location LIKE ?)","%#{params[:search]}%","%#{params[:search]}%").page(params[:page]).per(10)
     end
 
   	respond_to do |format|

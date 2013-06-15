@@ -1,4 +1,4 @@
-= form_for @lost_item, :html => { :class => 'form-horizontal' } do |f|
+= form_for [current_user,@lost_item], :html => { :class => 'form-horizontal' } do |f|
   - if @lost_item.errors.any?
     #error_explanation
       %h2= "#{pluralize(@lost_item.errors.count, "error")} prohibited this lost_item from being saved:"
@@ -49,7 +49,7 @@
   .control-group
     = f.label :email, :class => 'control-label'
     .controls
-      = f.text_field :email, :class => 'text'
+      = f.text_field :email, :value => current_user.email,:class => 'text',:readonly => true
 
   .control-group
     = f.label :additional_contact, :class => 'control-label'

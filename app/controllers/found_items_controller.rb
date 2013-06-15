@@ -1,8 +1,9 @@
 class FoundItemsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index]
   # GET /found_items
   # GET /found_items.json
   def index
-    @found_items = FoundItem.order('id').page(params[:page]).per(10)
+    @found_items = FoundItem.where("user_id IS NOT NULL").order('id').page(params[:page]).per(10)
 
     respond_to do |format|
       format.js
@@ -25,7 +26,7 @@ class FoundItemsController < ApplicationController
   # GET /found_items/new
   # GET /found_items/new.json
   def new
-    @found_item = FoundItem.new
+    @found_item = current_user.found_items.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,19 +36,24 @@ class FoundItemsController < ApplicationController
 
   # GET /found_items/1/edit
   def edit
-    @found_item = FoundItem.find(params[:id])
+    if user_found_items.include?(params[:id].to_i)
+      @found_item = current_user.found_items.find(params[:id])
+    else
+      redirect_to found_items_path,:notice => "You can not edit others report"
+      return
+    end
   end
 
   # POST /found_items
   # POST /found_items.json
   def create
-    @found_item = FoundItem.new(params[:found_item])
+    @found_item = current_user.found_items.build(params[:found_item])
     @found_item.ip_address = request.ip
 
     respond_to do |format|
       if @found_item.save
         # LostFound.find_notification(@found_item).deliver
-        format.html { redirect_to @found_item, notice: 'Found item was successfully created.' }
+        format.html { redirect_to user_found_item_path(current_user,@found_item), notice: 'Found item was successfully created.' }
         format.json { render json: @found_item, status: :created, location: @found_item }
       else
         format.html { render action: "new" }
@@ -59,7 +65,7 @@ class FoundItemsController < ApplicationController
   # PUT /found_items/1
   # PUT /found_items/1.json
   def update
-    @found_item = FoundItem.find(params[:id])
+    @found_item = current_user.found_items.find(params[:id])
 
     respond_to do |format|
       if @found_item.update_attributes(params[:found_item])
@@ -82,5 +88,9 @@ class FoundItemsController < ApplicationController
       format.html { redirect_to found_items_url }
       format.json { head :no_content }
     end
+  end
+
+  def user_found_items
+    current_user.found_items.collect(&:id)
   end
 end

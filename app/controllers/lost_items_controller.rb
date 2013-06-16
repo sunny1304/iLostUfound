@@ -55,7 +55,7 @@ class LostItemsController < ApplicationController
     @lost_item = current_user.lost_items.build(params[:lost_item])
     @lost_item.ip_address = request.ip
     # @lost_item.user_id = current_user.id
-    logger.debug @lost_item.inspect
+    # logger.debug @lost_item.inspect
     respond_to do |format|
       if @lost_item.save
         # LostFound.lost_notification(@lost_item).deliver

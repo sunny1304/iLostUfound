@@ -1,8 +1,16 @@
 ILostUfound::Application.routes.draw do
+
   devise_for :users
   resources :users do 
     resources :found_items
-    resources :lost_items
+    resources :lost_items,:except => [:show] do
+      member do
+        post 'comments'
+        get 'comments'
+        get 'show'
+        post 'show'
+      end
+    end
   end
   namespace :users do
       root :to => 'welcome#index'

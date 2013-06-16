@@ -41,3 +41,16 @@
 = link_to 'Edit', edit_user_lost_item_path(@lost_item), :class => 'btn'
 \|
 = link_to 'Back', lost_items_path, :class => 'btn'
+%br/
+%br/
+
+%div.show_comments= render :partial => 'show_comment', :locals => {:comments => @comments}
+
+- if user_signed_in?
+  %div
+    = form_tag(comments_user_lost_item_path(current_user.id,@lost_item),:remote => true,:method => :post) do
+      = label_tag "Post your comment"
+      = text_area_tag :content,nil,:maxlength => 50
+      %br/
+      = submit_tag "Submit", :class => 'btn btn-primary'
+     

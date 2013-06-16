@@ -8,6 +8,7 @@ class LostItem < ActiveRecord::Base
   mount_uploader  :lost_item_pic, LostItemPicUploader
 
   belongs_to :user
+  has_many :comments, :as => :commentable
 
   # searchable do
   # 	text :lost_item

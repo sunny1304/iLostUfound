@@ -18,7 +18,10 @@ class LostItemsController < ApplicationController
   def show
     # @lost_item = LostItem.where("id =? AND user_id =?",params[:id],params[:user_id])
     @lost_item = LostItem.find(params[:id])
+
+    @comments = @lost_item.comments.where("user_email IS NOT NULL").order("id DESC").page(params[:page]).per(7)
     respond_to do |format|
+      format.js
       format.html # show.html.erb
       format.json { render json: @lost_item }
     end
@@ -97,4 +100,23 @@ class LostItemsController < ApplicationController
   def user_lost_items
     current_user.lost_items.collect(&:id)
   end
+
+  def comments
+    if params[:content].present? && params[:user_id].present?
+      if request.request_method.eql?("POST")
+        user_email = User.find_by_sql("select email from users where id =#{params[:user_id]}")
+        comment = Comment.create(:content => params[:content], :commentable_id => params[:id].to_i, :commentable_type => 'LostItem',:user_email => user_email.first.email)
+      # comment.save
+      end
+      logger.debug request.request_method
+    end
+      @comments = LostItem.find(params[:id]).comments.where("user_email IS NOT NULL").order("id DESC").page(params[:page]).per(7)
+      # logger.debug @comments.inspect
+    respond_to do |format|
+      format.html{redirect_to user_lost_item_path(current_user,params[:id])}
+      format.js
+    end
+    # render :nothing => true
+  end
+
 end

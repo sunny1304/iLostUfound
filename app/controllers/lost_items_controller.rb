@@ -41,7 +41,7 @@ class LostItemsController < ApplicationController
     if user_lost_items.include?(params[:id].to_i)
       @lost_item = current_user.lost_items.find(params[:id])
     else
-      redirect_to lost_items_path,:notice => "You are not allowed to edit others report"
+      redirect_to lost_items_path,:alert => "You are not allowed to edit others report"
       return
     end
   end

@@ -15,7 +15,7 @@
       / Jumbotron
       .jumbotron
         - if notice.present? 
-          %p.notice= notice
+          %p.alert= notice
         - if alert.present?  
           %p.alert=  alert
         = yield

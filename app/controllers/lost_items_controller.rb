@@ -1,5 +1,5 @@
 class LostItemsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index]
+  before_filter :authenticate_user!, :except => [:index,:show]
   # GET /lost_items
   # GET /lost_items.json
   def index

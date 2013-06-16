@@ -1,5 +1,5 @@
 class FoundItemsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index]
+  before_filter :authenticate_user!, :except => [:index,:show]
   # GET /found_items
   # GET /found_items.json
   def index

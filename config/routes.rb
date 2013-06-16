@@ -3,11 +3,11 @@ ILostUfound::Application.routes.draw do
   devise_for :users
   resources :users do 
     resources :found_items
-    resources :lost_items,:except => [:show] do
+    resources :lost_items do
       member do
         post 'comments'
         get 'comments'
-        get 'show'
+        # get 'show'
         post 'show'
       end
     end

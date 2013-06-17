@@ -46,9 +46,4 @@
 %div.show_comments= render :partial => 'show_comment', :locals => {:comments => @comments}
 
 - if user_signed_in?
-  %div
-    = form_tag(comments_user_found_item_path(current_user.id,@found_item),:remote => true,:method => :post) do
-      = label_tag "Post your comment"
-      = text_area_tag :content,nil,:maxlength => 50, :placeholder => "50 characters only",:style => "width:340px;"
-      %br/
-      = submit_tag "Submit", :class => 'btn btn-primary'
+  = render :partial => 'comment_form', :locals => {:found_item => @found_item}

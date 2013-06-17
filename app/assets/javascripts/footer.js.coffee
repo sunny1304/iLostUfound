@@ -1,0 +1,3 @@
+$(->
+	$(".sausage-set").hide()
+	)  

@@ -2,7 +2,7 @@
 	- if @lost_report_count <= 0 && @found_report_count <= 0
 		%p Hi there, it seems you havent made any report yet.
 	- else
-		Hello, you have reported <b>#{@lost_report_count}</b> lost item#{(@lost_report_count >= 1)? "s": ""} &	<b>#{@found_report_count}</b> found item#{(@found_report_count >= 1)? "s": ""}
+		Hello, you have reported <b>#{@lost_report_count}</b> lost item#{(@lost_report_count > 1)? "s": ""} &	<b>#{@found_report_count}</b> found item#{(@found_report_count > 1)? "s": ""}
 		%br/	
 		click <a id="show_lost_found" href="#">here</a> to see them	
 

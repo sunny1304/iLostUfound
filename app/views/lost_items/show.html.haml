@@ -50,7 +50,7 @@
   %div
     = form_tag(comments_user_lost_item_path(current_user.id,@lost_item),:remote => true,:method => :post) do
       = label_tag "Post your comment"
-      = text_area_tag :content,nil,:maxlength => 50, :placeholder => "50 characters only"
+      = text_area_tag :content,nil,:maxlength => 50, :placeholder => "50 characters only",:style => "width:340px;"
       %br/
       = submit_tag "Submit", :class => 'btn btn-primary'
      

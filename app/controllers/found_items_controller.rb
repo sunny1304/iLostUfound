@@ -17,7 +17,9 @@ class FoundItemsController < ApplicationController
   def show
     @found_item = FoundItem.find(params[:id])
 
+    @comments = @found_item.comments.where("user_email IS NOT NULL").order("id DESC").page(params[:page]).per(7)
     respond_to do |format|
+      format.js
       format.html # show.html.erb
       format.json { render json: @found_item }
     end
@@ -93,4 +95,21 @@ class FoundItemsController < ApplicationController
   def user_found_items
     current_user.found_items.collect(&:id)
   end
+
+  def comments
+    if params[:content].present? && params[:user_id].present?
+      if request.request_method.eql?("POST")
+        user_email = User.find(params[:user_id])
+        comment = Comment.create(:content => params[:content], :commentable_id => params[:id].to_i, :commentable_type => 'FoundItem',:user_email => user_email.email)
+        # logger.debug ".....true....." if comment.save 
+      end
+    end
+      @comments = FoundItem.find(params[:id]).comments.where("user_email IS NOT NULL").order("id DESC").page(params[:page]).per(7)
+
+    respond_to do |format|
+      format.html{redirect_to user_found_item_path(current_user,params[:id])}
+      format.js
+    end
+  end
+
 end

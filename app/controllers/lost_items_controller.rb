@@ -104,11 +104,11 @@ class LostItemsController < ApplicationController
   def comments
     if params[:content].present? && params[:user_id].present?
       if request.request_method.eql?("POST")
-        user_email = User.find_by_sql("select email from users where id =#{params[:user_id]}")
-        comment = Comment.create(:content => params[:content], :commentable_id => params[:id].to_i, :commentable_type => 'LostItem',:user_email => user_email.first.email)
+        user_email = User.find(params[:user_id])
+        comment = Comment.create(:content => params[:content], :commentable_id => params[:id].to_i, :commentable_type => 'LostItem',:user_email => user_email.email)
       # comment.save
       end
-      logger.debug request.request_method
+      # logger.debug request.request_method
     end
       @comments = LostItem.find(params[:id]).comments.where("user_email IS NOT NULL").order("id DESC").page(params[:page]).per(7)
       # logger.debug @comments.inspect

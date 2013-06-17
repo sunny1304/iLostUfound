@@ -2,12 +2,17 @@ ILostUfound::Application.routes.draw do
 
   devise_for :users
   resources :users do 
-    resources :found_items
+    resources :found_items do
+      member do
+        post 'comments'
+        get  'comments'
+        post 'show'
+      end
+    end
     resources :lost_items do
       member do
         post 'comments'
-        get 'comments'
-        # get 'show'
+        get  'comments'
         post 'show'
       end
     end

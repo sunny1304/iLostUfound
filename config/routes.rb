@@ -1,7 +1,10 @@
 ILostUfound::Application.routes.draw do
 
+  # get "activities/index"
+
   devise_for :users
   resources :users do 
+    resources :activities, :only => [:index]
     resources :found_items do
       member do
         post 'comments'

@@ -12,6 +12,7 @@
  *= require jquery-ui
  *= require happy_js_custom
  *= require lost_items
+ *= require found_items
  *= require jquery.fancybox
  *= require spaghetti
  */

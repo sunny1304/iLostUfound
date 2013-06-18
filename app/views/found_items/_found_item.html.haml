@@ -1,5 +1,5 @@
 - unless found_item.user_id.nil?
 	%div.found_item
 		%ul{:class => "nav nav-pills nav-stacked"}
-			%li{:class=> "found_item",:id => "found_item_#{found_item.id}",:style=>"height:60px"}= link_to "#{found_item.name unless found_item.name.blank?} has found #{check_vowel(found_item.found_item)} #{process_item_name(found_item.found_item) unless found_item.found_item.blank?} near #{found_item.found_location} at #{found_item.found_date.strftime('%d %B, %Y') unless found_item.found_date.blank?}", user_found_item_path(found_item.user_id,found_item.id)
+			%li{:class=> "found_item",:id => "found_item_#{found_item.id}"}= link_to "#{found_item.name unless found_item.name.blank?} has found #{check_vowel(found_item.found_item)} #{process_item_name(found_item.found_item) unless found_item.found_item.blank?} near #{found_item.found_location} at #{found_item.found_date.strftime('%d %B, %Y') unless found_item.found_date.blank?}", user_found_item_path(found_item.user_id,found_item.id)
 			%br/

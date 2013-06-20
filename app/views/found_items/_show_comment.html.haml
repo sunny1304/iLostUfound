@@ -1,6 +1,6 @@
 -if comments.present?
   -comments.each do |comment|
-    %div{:class => "alert", :id => "comment_#{comment.id}",:style => "width:300px"}#{comment.user_email} said #{distance_of_time_in_words(Time.now,comment.created_at )} ago...<br/>#{comment.content}
+    %div{:class => "alert", :id => "comment_#{comment.id}",:style => "width:300px"}#{pic_on_comment(comment.user_id)} #{comment.user_email} said #{distance_of_time_in_words(Time.now,comment.created_at )} ago...<br/>#{comment.content}
   = paginate comments, :remote => true
 -else
   %p No comments yet    	

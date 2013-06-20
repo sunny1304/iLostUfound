@@ -1,0 +1,18 @@
+%p{:id => "login"} 
+	Last Login at : #{time_tag @last_login}
+
+%p	
+	You have reported #{@lost_report_count} lost item#{(@lost_report_count > 1)? "s" : ""} & #{@found_report_count} found item#{(@found_report_count > 1)? "s" : "" }
+
+%div.profile_pic
+	= image_tag current_user.profile_pic.thumb.url if current_user.profile_pic.url.present?
+	= gravatar if current_user.profile_pic.url.nil?
+
+%div.profile_pic_form
+	= form_for(current_user,:url =>profile_picture_upload_user_activities_path(current_user), :remote => true) do |f|
+		= f.file_field "profile_pic"
+		= f.submit "submit" 
+
+
+
+

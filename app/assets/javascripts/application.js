@@ -16,7 +16,8 @@
 //= require happy
 //= require happy.methods
 //= require lost_items
-//= footer
+//= require welcome
+//= require footer
 //= require jquery.fancybox.pack
 //= require spaghetti
 

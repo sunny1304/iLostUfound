@@ -23,4 +23,15 @@ module ApplicationHelper
 			item
 		end
 	end
+
+
+
+	def gravatar
+		image_tag "gravatar.jpg", :width => "70px"
+	end
+
+	def gravatar_mini
+		image_tag "gravatar_mini.jpeg", :height => "25px", :width => "25px"
+	end
+
 end

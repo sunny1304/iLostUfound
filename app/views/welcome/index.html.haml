@@ -4,13 +4,14 @@
 	- else
 		Hello, you have reported <b>#{@lost_report_count}</b> lost item#{(@lost_report_count > 1)? "s": ""} &	<b>#{@found_report_count}</b> found item#{(@found_report_count > 1)? "s": ""}
 		%br/	
-		click <a id="show_lost_found" href="#">here</a> to see them	
+		click <a id="show_lost_found" href="#">here</a> to see them
+		= link_to "check your activity", user_activities_path(current_user.id)	
 
 
-%div.lost_found_items
+%div{:class => "lost_found_items"}
 	- if @lost_item_ids.present?
 		- @lost_item_ids.each do |item|
-			= link_to "You have lost your #{process_item_name(item.last)}", user_lost_item_path(current_user,item.first)
+			= link_to "You have lost your #{process_item_name(item.last)}", user_lost_item_path(current_user,item.first), :class => "fbb"
 			%br/
 	%br/
 	
@@ -26,5 +27,5 @@
 		$(".lost_found_items").hide();
 		$("#show_lost_found").on('click',function(){
 			$(".lost_found_items").toggle('slow');
-		})
-	})					
+		});
+	});		

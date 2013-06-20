@@ -4,7 +4,11 @@ ILostUfound::Application.routes.draw do
 
   devise_for :users
   resources :users do 
-    resources :activities, :only => [:index]
+    resources :activities, :only => [:index] do
+      collection do
+        put 'profile_picture_upload'
+      end
+    end
     resources :found_items do
       member do
         post 'comments'

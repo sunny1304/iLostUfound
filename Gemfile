@@ -46,6 +46,7 @@ gem 'gmaps4rails'
 
 # To use debugger
 # gem 'debugger'
+gem 'rmagick'
 gem 'carrierwave', '~> 0.8.0'
 gem 'kaminari'
 gem 'spaghetti'

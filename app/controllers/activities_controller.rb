@@ -20,4 +20,17 @@ class ActivitiesController < ApplicationController
   def user_sent_mail
   end
 
+  def profile_picture_upload
+    if params[:user].present?
+      if current_user.update_attributes(params[:user])
+        # redirect_to root_url
+        logger.debug "pic uploaded"
+      end
+    end
+    respond_to do |format|
+      format.html{redirect_to request.referer, :alert => "picture has been uploaded"}
+      format.js
+    end
+  end
+
 end

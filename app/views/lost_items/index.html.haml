@@ -38,4 +38,6 @@
 
 = spaghetti 'lost_items',lost_items_path
 
-<a onclick = "$('html,body').animate({scrollTop:0},'slow');" href= "javascript:void(0);" style ="float:right"> Top </a>
+- if @lost_items.count > 10
+	%br/
+	<a onclick = "$('html,body').animate({scrollTop:0},'slow');" href= "javascript:void(0);" style ="float:right"> Top </a>

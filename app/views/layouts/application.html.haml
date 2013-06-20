@@ -13,7 +13,7 @@
     .container
       = render 'shared/header'
       / Jumbotron
-      .jumbotron#top
+      .jumbotron
         - if notice.present? 
           %p.alert= notice
         - if alert.present?  
@@ -21,5 +21,11 @@
         = yield
       = render 'shared/footer'
     / /container
+
+
+:javascript
+  $(function(){
+    $(".alert").fadeOut(7000);
+  });    
 
 

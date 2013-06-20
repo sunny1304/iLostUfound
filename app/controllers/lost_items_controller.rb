@@ -3,7 +3,7 @@ class LostItemsController < ApplicationController
   # GET /lost_items
   # GET /lost_items.json
   def index
-    # @lost_items = LostItem.all
+    @lost_items_top = LostItem.all.count
     @lost_items = LostItem.where("user_id IS NOT NULL").order('id').page(params[:page]).per(10)
     
     respond_to do |format|
@@ -117,6 +117,10 @@ class LostItemsController < ApplicationController
       format.js
     end
     # render :nothing => true
+  end
+
+  def lock_item 
+    # logger.debug params.inspect
   end
 
 end

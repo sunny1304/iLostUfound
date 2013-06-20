@@ -3,6 +3,7 @@ class FoundItemsController < ApplicationController
   # GET /found_items
   # GET /found_items.json
   def index
+    @found_items_top = FoundItem.all.count
     @found_items = FoundItem.where("user_id IS NOT NULL").order('id').page(params[:page]).per(10)
 
     respond_to do |format|

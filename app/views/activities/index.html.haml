@@ -7,11 +7,21 @@
 %div.profile_pic
 	= image_tag current_user.profile_pic.thumb.url if current_user.profile_pic.url.present?
 	= gravatar if current_user.profile_pic.url.nil?
+%br/	
+%a{ :href => "javascript:void(0);", :id => "change_profile_pic"}Change your pic?	
 
-%div.profile_pic_form
+%div{:class => "profile_pic_form", :style => "display:none;"}
 	= form_for(current_user,:url =>profile_picture_upload_user_activities_path(current_user), :remote => true) do |f|
 		= f.file_field "profile_pic"
 		= f.submit "submit" 
+
+
+:javascript
+	$(function(){
+		$("#change_profile_pic").on('click',function(){
+			$(".profile_pic_form").toggle('slow');
+		});
+	});	
 
 
 

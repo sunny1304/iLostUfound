@@ -13,7 +13,7 @@
     .container
       = render 'shared/header'
       / Jumbotron
-      .jumbotron
+      .jumbotron#top
         - if notice.present? 
           %p.alert= notice
         - if alert.present?  

@@ -4,7 +4,7 @@ This is a project for lost and found items. This website will act as a platform 
 
 
 
-initial plans: 
+Initial plans: 
 
 1. Rails 3.2.13 
 

@@ -1,7 +1,8 @@
 = form_tag(search_found_path, :method => :get, :remote => true) do 
 	= label_tag "Searching for something you have lost?"
-	= search_field_tag "search"
-	= submit_tag "Submit"
+	= search_field_tag "search",nil,:placeholder => "search with item or location"
+	%br/
+	= submit_tag "Submit", :class => "btn btn-info"
 
 
 %div.found_partial	

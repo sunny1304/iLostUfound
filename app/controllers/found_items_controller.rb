@@ -41,8 +41,12 @@ class FoundItemsController < ApplicationController
   def edit
     if user_found_items.include?(params[:id].to_i)
       @found_item = current_user.found_items.find(params[:id])
+      if @found_item.found
+        redirect_to found_items_path,:alert => "This report is closed, you can not edit it."
+        return
+      end
     else
-      redirect_to found_items_path,:notice => "You can not edit others report"
+      redirect_to found_items_path,:alert => "You can not edit others report"
       return
     end
   end

@@ -47,7 +47,13 @@
 
 :javascript
   $(function(){
-    $("#found").on("click",function(){
-      $.post("#{lock_item_user_lost_item_path(current_user.id,@lost_item.id )}", {found: 1, item: #{@lost_item.id}}, function(){console.log("data sent");});
+    $(document).on("change",'input[type ="checkbox"][name = "found"]',function(){
+      if (confirm("Are you sure?")){
+        $.post("#{lock_item_user_lost_item_path(current_user.id,@lost_item.id )}", {found: 1, item: #{@lost_item.id}}, function(){console.log("data sent");});
+      }
+      else{
+        $.post("#{lock_item_user_lost_item_path(current_user.id,@lost_item.id )}", {found: null, item: #{@lost_item.id}}, function(){console.log("data sent");});
+      };
     });
-  });          
+  });   
+         

@@ -1,0 +1,16 @@
+- if !lost_item.found
+	%br/
+	= link_to 'Edit', edit_user_lost_item_path(lost_item), :class => 'btn btn-success'
+	\|
+	= link_to 'Back', lost_items_path, :class => 'btn btn-success'
+	%br/
+	%br/
+	- if is_reporter_of_lost_item?(lost_item.id)
+		%h5
+			close report
+		= check_box_tag :found,'0',false, :class => "navbar-form checkbox"
+		%br/
+- else
+	%br/
+	%b
+		The report is closed 	

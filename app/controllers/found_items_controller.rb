@@ -4,7 +4,7 @@ class FoundItemsController < ApplicationController
   # GET /found_items.json
   def index
     @found_items_top = FoundItem.all.count
-    @found_items = FoundItem.where("user_id IS NOT NULL").order('id').page(params[:page]).per(10)
+    @found_items = FoundItem.where("user_id IS NOT NULL").not_found.order('id desc').page(params[:page]).per(10)
 
     respond_to do |format|
       format.js
@@ -55,7 +55,7 @@ class FoundItemsController < ApplicationController
 
     respond_to do |format|
       if @found_item.save
-        # LostFound.find_notification(@found_item).deliver
+        # foundFound.find_notification(@found_item).deliver
         format.html { redirect_to user_found_item_path(current_user,@found_item), notice: 'Found item was successfully created.' }
         format.json { render json: @found_item, status: :created, location: @found_item }
       else
@@ -109,6 +109,21 @@ class FoundItemsController < ApplicationController
 
     respond_to do |format|
       format.html{redirect_to user_found_item_path(current_user,params[:id])}
+      format.js
+    end
+  end
+
+  def lock_item 
+    if params[:found].present? && params[:item].present?
+      if params[:found] == "1"
+        @found_item = FoundItem.find(params[:item])
+        if @found_item.present?
+          @found_item.update_attributes(:found => true)
+        end
+      end
+    end
+    @found_item = FoundItem.find(params[:item])
+    respond_to do |format|
       format.js
     end
   end

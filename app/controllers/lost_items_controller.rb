@@ -4,7 +4,7 @@ class LostItemsController < ApplicationController
   # GET /lost_items.json
   def index
     @lost_items_top = LostItem.all.count
-    @lost_items = LostItem.where("user_id IS NOT NULL").order('id').page(params[:page]).per(10)
+    @lost_items = LostItem.where("user_id IS NOT NULL").not_found.order('id desc').page(params[:page]).per(10)
     
     respond_to do |format|
       format.js
@@ -120,7 +120,18 @@ class LostItemsController < ApplicationController
   end
 
   def lock_item 
-    # logger.debug params.inspect
+    if params[:found].present? && params[:item].present?
+      if params[:found] == "1"
+        @lost_item = LostItem.find(params[:item])
+        if @lost_item.present?
+          @lost_item.update_attributes(:found => true)
+        end
+      end
+    end
+    @lost_item = LostItem.find(params[:item])
+    respond_to do |format|
+      format.js
+    end
   end
 
 end

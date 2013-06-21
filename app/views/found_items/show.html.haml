@@ -36,16 +36,18 @@
 %div
   = image_tag "http://maps.google.com/maps/api/staticmap?size=300x250&sensor=true&zoom=16&markers=#{@found_item.latitude}%2c#{@found_item.longitude}"   
 
-%br/  
-
-= link_to 'Edit', edit_user_found_item_path(@found_item),:class => 'btn btn-success'
-\|
-= link_to 'Back', found_items_path, :class => 'btn btn-success'
-
-%br/
-%br/
+%div.check_item= render :partial => "check_item", :locals => {:found_item => @found_item}
 
 %div.show_comments= render :partial => 'show_comment', :locals => {:comments => @comments}
 
 - if user_signed_in?
   = render :partial => 'comment_form', :locals => {:found_item => @found_item}
+
+
+
+:javascript
+  $(function(){
+    $("#found").on("click",function(){
+      $.post("#{lock_item_user_found_item_path(current_user.id,@found_item.id )}", {found: 1, item: #{@found_item.id}}, function(){console.log("data sent");});
+    });
+  });   

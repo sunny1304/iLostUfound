@@ -14,6 +14,7 @@ ILostUfound::Application.routes.draw do
         post 'comments'
         get  'comments'
         post 'show'
+        post 'lock_item'
       end
     end
     resources :lost_items do
@@ -21,6 +22,7 @@ ILostUfound::Application.routes.draw do
         post 'comments'
         get  'comments'
         post 'show'
+        post 'lock_item'
       end
     end
   end

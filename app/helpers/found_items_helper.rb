@@ -11,4 +11,9 @@ module FoundItemsHelper
 			gravatar_mini
 		end
 	end
+
+	def is_reporter_of_found_item?(id)
+    	current_user.found_items.collect(&:id).include?(id)
+	end
+
 end

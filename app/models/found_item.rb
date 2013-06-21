@@ -1,6 +1,6 @@
 class FoundItem < ActiveRecord::Base
 	
-  attr_accessible :additional_contact, :address, :cell, :email, :found_date, :found_item, :found_item_pic, :found_location, :name,:longitude,:latitude,:description,:ip_address
+  attr_accessible :additional_contact, :address, :cell, :email, :found_date, :found_item, :found_item_pic, :found_location, :name,:longitude,:latitude,:description,:ip_address,:found
   validates_presence_of :name, :address, :cell, :found_item, :found_location, :found_date, :email
 
   geocoded_by :found_location
@@ -9,4 +9,6 @@ class FoundItem < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments, :as => :commentable
+
+  scope :not_found, where(:found => false)
 end

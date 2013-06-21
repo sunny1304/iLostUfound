@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620032318) do
+ActiveRecord::Schema.define(:version => 20130620164445) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -33,13 +33,14 @@ ActiveRecord::Schema.define(:version => 20130620032318) do
     t.string   "found_item_pic"
     t.string   "email"
     t.string   "additional_contact"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.float    "longitude"
     t.float    "latitude"
     t.string   "description"
     t.string   "ip_address"
     t.integer  "user_id"
+    t.boolean  "found",              :default => false
   end
 
   create_table "lost_items", :force => true do |t|
@@ -51,14 +52,15 @@ ActiveRecord::Schema.define(:version => 20130620032318) do
     t.string   "lost_item_pic"
     t.string   "email"
     t.string   "additional_contact"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.datetime "lost_date"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "description"
     t.string   "ip_address"
     t.integer  "user_id"
+    t.boolean  "found",              :default => false
   end
 
   create_table "users", :force => true do |t|

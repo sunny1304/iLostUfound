@@ -11,13 +11,13 @@
 %div{:class => "lost_found_items"}
 	- if @lost_item_ids.present?
 		- @lost_item_ids.each do |item|
-			= link_to "You have lost your #{process_item_name(item.last)}", user_lost_item_path(current_user,item.first), :class => "fbb"
+			= link_to "You have lost your #{process_item_name(item.last)}#{(item[1])? "(closed)" : ""}", user_lost_item_path(current_user,item.first), :class => "fbb"
 			%br/
 	%br/
 	
 	- if @found_item_ids.present?
 		- @found_item_ids.each do |item|
-			= link_to "You have found #{check_vowel(item.last)} #{process_item_name(item.last)}", user_found_item_path(current_user,item.first)
+			= link_to "You have found #{check_vowel(item.last)} #{process_item_name(item.last)}#{(item[1])? "(closed)" : ""}", user_found_item_path(current_user,item.first)
 			%br/
 %br/
 - if user_signed_in?

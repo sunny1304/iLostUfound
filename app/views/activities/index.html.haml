@@ -5,8 +5,10 @@
 	You have reported #{@lost_report_count} lost item#{(@lost_report_count > 1)? "s" : ""} & #{@found_report_count} found item#{(@found_report_count > 1)? "s" : "" }
 
 %div.profile_pic
-	= image_tag current_user.profile_pic.thumb.url if current_user.profile_pic.url.present?
-	= gravatar if current_user.profile_pic.url.nil?
+	- if current_user.profile_pic.thumb.url.present?
+		= image_tag current_user.profile_pic.thumb.url
+	- else	
+		= gravatar
 %br/	
 %a{ :href => "javascript:void(0);", :id => "change_profile_pic"}Change your pic?	
 

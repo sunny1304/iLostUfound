@@ -18,4 +18,4 @@ Initial plans:
 
 6. simple-form (will be used later)
 
-7. geocoder for showing google mapa and for search by location.
+7. geocoder for showing google maps and for search by location.

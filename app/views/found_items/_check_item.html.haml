@@ -6,8 +6,7 @@
 	%br/
 	%br/
 	- if is_reporter_of_found_item?(found_item.id)
-		%h5
-			close report
+		= label_tag "Close Report"
 		= check_box_tag :found,'0',false, :class => "navbar-form checkbox"
 		%br/
 - else

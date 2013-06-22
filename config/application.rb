@@ -60,6 +60,9 @@ module ILostUfound
     config.assets.version = '1.0'
 
     #devise default_url_options
-    config.action_mailer.default_url_options = {:host => 'localhost:3000'} 
+    config.action_mailer.default_url_options = {:host => 'localhost:3000'}
+
+    # add app/assets/fonts to the asset path
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end

@@ -10,18 +10,25 @@
     = csrf_meta_tags
 
   %body
-    .container
-      = render 'shared/header'
-      / Jumbotron
-      .jumbotron
-        - if notice.present? 
-          %p.alert= notice
-        - if alert.present?  
-          %p.alert=  alert
-        = yield
+    = render 'shared/header'
+    .container-fluid
+      .row-fluid
+        .span3
+          .well.sidebar-nav
+            %ul.nav.nav-list
+              %li.nav-header Sidebar
+          //.well
+        //span
+        .span9
+          - if notice.present?
+            %p.alert= notice
+          - if alert.present?
+            %p.alert=  alert
+          = yield
+        //span
+      //row
       = render 'shared/footer'
-    / /container
-
+    //.fluid-container
 
 :javascript
   $(function(){

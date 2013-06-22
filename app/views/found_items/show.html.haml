@@ -34,8 +34,8 @@
   = @found_item.additional_contact if @found_item.additional_contact.present?
 %div
   = image_tag "http://maps.google.com/maps/api/staticmap?size=300x250&sensor=true&zoom=16&markers=#{@found_item.latitude}%2c#{@found_item.longitude}"   
-
-%div.check_item= render :partial => "check_item", :locals => {:found_item => @found_item}
+- if user_signed_in?
+  %div.check_item= render :partial => "check_item", :locals => {:found_item => @found_item}
 
 %div.show_comments= render :partial => 'show_comment', :locals => {:comments => @comments}
 
@@ -43,15 +43,15 @@
   = render :partial => 'comment_form', :locals => {:found_item => @found_item}
 
 
-
-:javascript
-  $(function(){
-    $(document).on("change",'input[type ="checkbox"][name = "found"]',function(){
-      if (confirm("Are you sure?")){
-        $.post("#{lock_item_user_found_item_path(current_user.id,@found_item.id )}", {found: 1, item: #{@found_item.id}}, function(){console.log("data sent");});
-      }
-      else{
-        $.post("#{lock_item_user_found_item_path(current_user.id,@found_item.id )}", {found: null, item: #{@found_item.id}}, function(){console.log("data sent");});
-      };
-    });
-  });   
+- if user_signed_in?
+  :javascript
+    $(function(){
+      $(document).on("change",'input[type ="checkbox"][name = "found"]',function(){
+        if (confirm("Are you sure?")){
+          $.post("#{lock_item_user_found_item_path(current_user.id,@found_item.id )}", {found: 1, item: #{@found_item.id}}, function(){console.log("data sent");});
+        }
+        else{
+          $.post("#{lock_item_user_found_item_path(current_user.id,@found_item.id )}", {found: null, item: #{@found_item.id}}, function(){console.log("data sent");});
+        };
+      });
+    });   

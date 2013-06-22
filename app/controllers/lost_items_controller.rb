@@ -3,7 +3,7 @@ class LostItemsController < ApplicationController
   # GET /lost_items
   # GET /lost_items.json
   def index
-    @lost_items_top = LostItem.all.count
+    @lost_items_top = LostItem.where("user_id IS NOT NULL").not_found.count
     @lost_items = LostItem.where("user_id IS NOT NULL").not_found.order('id desc').page(params[:page]).per(10)
     
     respond_to do |format|

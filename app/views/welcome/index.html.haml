@@ -1,6 +1,6 @@
 %div
 	- if @lost_report_count <= 0 && @found_report_count <= 0
-		%p Hi there, it seems you havent made any report yet.
+		%p Hi there, it seems you havent made any report yet. #{link_to "Sign in",new_user_session_path} to report.
 	- else
 		Hello <b>#{current_user.email.split("@").first}</b>, you have reported <b>#{@lost_report_count}</b> lost item#{(@lost_report_count > 1)? "s": ""} &	<b>#{@found_report_count}</b> found item#{(@found_report_count > 1)? "s": ""}
 		%br/	

@@ -12,13 +12,17 @@
   %body
     .container
       = render 'shared/header'
-      / Jumbotron
-      .jumbotron
-        - if notice.present? 
-          %p.alert= notice
-        - if alert.present?  
-          %p.alert=  alert
-        = yield
+      .row
+        .span4
+          = render 'shared/sidebar'
+        .span8
+          / Jumbotron
+          .jumbotron
+            - if notice.present?
+              %p.alert= notice
+            - if alert.present?
+              %p.alert=  alert
+            = yield
       = render 'shared/footer'
     / /container
 

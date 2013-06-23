@@ -1,5 +1,5 @@
 - if replies.present?
-	- replies.each do |reply|
+	- replies.order("id desc").each do |reply|
 		%div.comment{:style => "margin-left:20px;background-color:lightblue;opacity:.6;color:green"}
 			= User.find(reply.user_id).email.split("@")[0] + " replied " +distance_of_time_in_words(Time.now-reply.created_at) + " ago..."
 			%br/

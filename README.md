@@ -12,7 +12,7 @@ Initial plans:
 
 3. haml
 
-4. Heroku 
+4. Heroku for deploy 
 
 5. Twitter-bootstrap
 

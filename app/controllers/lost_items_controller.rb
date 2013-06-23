@@ -138,4 +138,17 @@ class LostItemsController < ApplicationController
     end
   end
 
+  def reply
+    if params[:user_id].present? && params[:comment_id].present? && params[:reply].present?
+      @reply = Reply.create(:reply => params[:reply], :user_id => params[:user_id].to_i, :comment_id => params[:comment_id].to_i)
+    end
+    @comment = Comment.find(params[:comment_id])
+    @replies = @comment.replies
+
+    respond_to do |format|
+      format.html{redirect_to user_lost_item_path(current_user,params[:id])}
+      format.js
+    end
+  end
+
 end

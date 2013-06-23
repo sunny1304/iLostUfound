@@ -39,7 +39,7 @@
   %div.check_item= render :partial => "check_item", :locals => {:lost_item => @lost_item}
 
 
-%div.show_comments= render :partial => 'show_comment', :locals => {:comments => @comments}
+%div.show_comments= render :partial => 'show_comment', :locals => {:comments => @comments, :lost_item => @lost_item}
 
 - if user_signed_in?
   = render :partial => 'comment_form', :locals => {:lost_item => @lost_item}

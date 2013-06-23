@@ -1,0 +1,4 @@
+$(".replies_#{params[:comment_id]}").html("#{j render :partial => 'replies', :locals => {:replies => @replies}}");
+
+$("div#reply_#{params[:comment_id]} #reply").val("");
+$("#reply_#{params[:comment_id]}").hide();

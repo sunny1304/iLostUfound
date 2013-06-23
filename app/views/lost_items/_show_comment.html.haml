@@ -1,6 +1,34 @@
 -if comments.present?
   -comments.each do |comment|
-    %div{:class => "comment", :id => "comment_#{comment.id}",:style => "width:350px"}#{pic_on_comment(comment.user_id)} #{comment.user_email} said #{distance_of_time_in_words(Time.now,comment.created_at)} ago...<br/>#{comment.content}
+    
+
+    %div{:class => "comment", :id => "comment_#{comment.id}",:style => "width:450px"}#{pic_on_comment(comment.user_id)} #{comment.user_email.split("@")[0]} said #{distance_of_time_in_words(Time.now,comment.created_at)} ago...<br/><b>#{comment.content}</b><br/><div class = "replies_#{comment.id}">#{render :partial => "replies", :locals => {:replies => comment.replies}}</div>#{link_to "reply","javascript:void(0);",:id => comment.id, :class => "reply_link" if user_signed_in?}  
+    
+
+
+    - if user_signed_in?
+      %div{:class => "reply", :style => "display:none;",:id => "reply_#{comment.id}"}
+        = form_tag reply_user_lost_item_path(current_user,lost_item), :remote => true do
+          = text_area_tag 'reply',nil,:placeholder => "50 characters only",:maxlength => 50, :class => "comment_form_textarea"
+          = hidden_field_tag 'comment_id', comment.id
+          %br/
+          = submit_tag 'Reply', :class => "btn btn-warning"
+  
+
+
   = paginate comments, :remote => true
+
+
 -else
-  %p No comments yet    	
+  %p No comments yet 
+
+
+
+:javascript
+  $(function(){
+  	$('.reply_link').on('click',function(){
+  		var get_id = $(this).attr('id');
+  		// console.log(get_id);
+  		$('#reply_'+get_id).toggle('slow');
+  	});
+  })     	

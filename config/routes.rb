@@ -23,6 +23,8 @@ ILostUfound::Application.routes.draw do
         get  'comments'
         post 'show'
         post 'lock_item'
+        post 'reply'
+        get  'reply'
       end
     end
   end

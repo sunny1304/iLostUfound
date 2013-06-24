@@ -14,7 +14,7 @@
 
 %div{:class => "profile_pic_form", :style => "display:none;"}
 	= form_for(current_user,:url =>profile_picture_upload_user_activities_path(current_user), :remote => true) do |f|
-		= f.file_field "profile_pic"
+		= f.file_field "profile_pic", :class=> "icon-file"
 		= f.submit "submit" 
 
 

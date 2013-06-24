@@ -29,12 +29,12 @@
   .control-group
     = f.label :description, :class => 'control-label'
     .controls
-      = f.text_area :description, :class => 'textarea', :rows => 5    
+      = f.text_area :description, :class => 'textarea', :rows => 5, :title => "Try to be verbose with detail"    
 
   .control-group
     = f.label :lost_location, :class => 'control-label'
     .controls
-      = f.text_area :lost_location, :class => 'textarea', :rows => 5
+      = f.text_area :lost_location, :class => 'textarea', :rows => 5, :title => "Please try provide the location as accurate as you can"
 
   .control-group
     = f.label :lost_date, :class => 'control-label'
@@ -62,6 +62,8 @@
 
 :javascript
   $(function(){
+    $(document).tooltip();
+
     $("#lost_item_lost_date").datepicker({dateFormat: 'dd-mm-yy'});
 
     $(".form-horizontal").isHappy({

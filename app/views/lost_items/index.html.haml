@@ -1,9 +1,9 @@
 %h3 Reported Lost Items
 %em 
 	- if user_signed_in?
-		%b= link_to 'Report a Lost item', new_user_lost_item_path(current_user)
+		%b= link_to 'Report a Lost item', new_user_lost_item_path(current_user),:style => "font-size:120%"
 	- else
-		%b= link_to 'Report a Lost item', user_session_path	
+		%b= link_to 'Report a Lost item', user_session_path,:style => "font-size:120%"	
 %br/
 %br/
 / %table

@@ -44,7 +44,7 @@ class LostItemsController < ApplicationController
     if user_lost_items.include?(params[:id].to_i)
       @lost_item = current_user.lost_items.find(params[:id])
       if @lost_item.found
-        redirect_to lost_items_path, :alert => "This report is closed, you can not edit it."
+        redirect_to lost_items_path, :notice => "This report is closed, you can not edit it."
         return
       end
     else

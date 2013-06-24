@@ -1,9 +1,9 @@
 %h3 Reported Found Items
 %em
-- if user_signed_in?
-	%b= link_to 'Report a Found item', new_user_found_item_path(current_user)
-- else
-	%b= link_to 'Report a Found item', user_session_path	
+	- if user_signed_in?
+		%b= link_to 'Report a Found item', new_user_found_item_path(current_user),:style => "font-size:120%"
+	- else
+		%b= link_to 'Report a Found item', user_session_path,:style => "font-size:120%"	
 %br/
 %br/
 / %table

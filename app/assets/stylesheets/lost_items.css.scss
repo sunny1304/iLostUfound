@@ -7,8 +7,15 @@
 body {
   padding-top: 20px;
   padding-bottom: 60px;
-}
+  font-family:"Times New Roman",Georgia,Serif;
 
+}
+.lost_item a{
+  font-size: 110%;
+}
+.found_item a{
+  font-size: 110%;
+}
 /* Custom container */
 
 .container {
@@ -50,6 +57,7 @@ body {
 /* Customize the navbar links to be fill the entire space of the .navbar */
 
 .navbar {
+  font-size: 110%;
   .navbar-inner {
     padding: 0;
   }
@@ -110,5 +118,36 @@ body {
 
 .comment, .comment h4 {
     color: #C09853;
+} 
+
+.ui-tooltip {
+  padding: 8px;
+  position: absolute;
+  z-index: 9999;
+  max-width: 300px;
+  -webkit-box-shadow: 0 0 5px #aaa;
+  box-shadow: 0 0 5px #aaa;
+  color : #5B391E;
 }
+body .ui-tooltip {
+  border-width: 2px;
+
+}
+
+.page-header{
+  color : #5B391E;
+  opacity: .6;
+  font-family:"Times New Roman",Georgia,Serif;
+}
+
+.form-horizontal .control-label {
+float: left;
+width: 160px;
+padding-top: 5px;
+text-align: right;
+color : #5B391E;
+font-size:131%;
+font-family:"Times New Roman",Georgia,Serif;
+}
+
 

@@ -5,7 +5,7 @@
 	You have reported #{@lost_report_count} lost item#{(@lost_report_count > 1)? "s" : ""} & #{@found_report_count} found item#{(@found_report_count > 1)? "s" : "" }
 
 %div.profile_pic
-	- if current_user.profile_pic.thumb.url.present?
+	- if current_user.profile_pic.url.present?
 		= image_tag current_user.profile_pic.thumb.url
 	- else	
 		= gravatar
@@ -14,7 +14,7 @@
 
 %div{:class => "profile_pic_form", :style => "display:none;"}
 	= form_for(current_user,:url =>profile_picture_upload_user_activities_path(current_user), :remote => true) do |f|
-		= f.file_field "profile_pic", :class=> "icon-file"
+		= f.file_field "profile_pic", :class=> ""
 		= f.submit "submit" 
 
 

@@ -2,7 +2,7 @@
   -comments.each do |comment|
     
 
-    %div{:class => "comment", :id => "comment_#{comment.id}",:style => "width:450px"}#{pic_on_comment(comment.user_id)} #{comment.user_email.split("@")[0]} said #{distance_of_time_in_words(Time.now,comment.created_at)} ago...<br/><b>#{comment.content}</b><br/><div class = "replies_#{comment.id}">#{render :partial => "replies", :locals => {:replies => comment.replies}}</div>#{link_to "reply","javascript:void(0);",:id => comment.id, :class => "reply_link" if user_signed_in?}  
+    %div{:class => "comment", :id => "comment_#{comment.id}",:style => "width:450px;font-size:110%;"}#{pic_on_comment(comment.user_id)} <b>#{comment.user_email.split("@")[0]}</b> said #{distance_of_time_in_words(Time.now,comment.created_at)} ago...<br/><b>#{comment.content}</b><br/><div class = "replies_#{comment.id}">#{render :partial => "replies", :locals => {:replies => comment.replies}}</div>#{link_to "reply","javascript:void(0);",:id => comment.id, :class => "reply_link" if user_signed_in?}  
     
 
 

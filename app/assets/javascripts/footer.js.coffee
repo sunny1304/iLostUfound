@@ -1,3 +1,3 @@
 $(->
-	$(".sausage-span").hide()
+	$(".sausage-set sausage-set-init").hide()
 	)  

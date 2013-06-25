@@ -1,3 +1,3 @@
 $(->
-	$(".sausage-set").hide()
+	$(".sausage-span").hide()
 	)  

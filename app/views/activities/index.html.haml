@@ -5,7 +5,7 @@
 	You have reported #{@lost_report_count} lost item#{(@lost_report_count > 1)? "s" : ""} & #{@found_report_count} found item#{(@found_report_count > 1)? "s" : "" }
 
 %div.profile_pic
-	- if current_user.profile_pic.url.present?
+	- if current_user.profile_pic.url
 		= image_tag current_user.profile_pic.thumb.url
 	- else	
 		= gravatar

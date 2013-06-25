@@ -2,7 +2,7 @@ module FoundItemsHelper
 	def pic_on_comment(id)
 		if id.present?
 			user = User.find(id)
-			if user.profile_pic.url.present?
+			if user.profile_pic.url
 				image_tag user.profile_pic.mini.url
 			else
 				gravatar_mini

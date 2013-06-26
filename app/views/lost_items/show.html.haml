@@ -43,7 +43,15 @@
 
 - if user_signed_in?
   = render :partial => 'comment_form', :locals => {:lost_item => @lost_item}
-     
+
+
+- if user_signed_in?
+  %div{:class => 'private_message', :id => 'private_message', :style => 'display:none;'}= render :partial => 'private_message',:locals => {:lost_item => @lost_item}
+  %p.confirmation   
+
+<a href="#private_message" id="pm">Send the reporter a message</a>     
+
+
 - if user_signed_in?
   :javascript
     $(function(){
@@ -55,5 +63,6 @@
           $.post("#{lock_item_user_lost_item_path(current_user.id,@lost_item.id )}", {found: null, item: #{@lost_item.id}}, function(){console.log("data sent");});
         };
       });
+      $("#pm").fancybox();
     });   
          

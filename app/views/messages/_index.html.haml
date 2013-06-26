@@ -1,0 +1,25 @@
+%p.message_count= " You have #{messages_unread.count} unread message"
+
+%p Inbox
+%table
+	-if @messages_inbox.present?
+		- messages_inbox.each do |message|
+			%tr
+				%td{:style =>"width:250px;"}= link_to message.subject, "javascript:void(0)", :id => message.id, :class => 'private_message', :message_path => user_message_path(current_user.id,message.id)
+	
+				%td= link_to "delete",user_message_path(current_user.id,message.id),:method => :delete, :data => {:confirm => "Are You sure?"}, :remote => true
+
+
+
+%p Sent Box
+%table
+	- if messages_sent.present?
+		- messages_sent.each do |message|
+			%tr
+				%td{:style => "width:250px;"}= link_to message.subject,"javascript:void(0)", :id => message.id,:class=>'private_message'
+		
+				%td= link_to "delete",user_message_path(current_user.id,message.id), :method => :delete, :data => {:confirm => "Are You sure?"}, :remote => true
+
+
+
+%div{:id => "show_sent_message",:style => "display:none;" }

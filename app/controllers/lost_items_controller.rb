@@ -151,4 +151,16 @@ class LostItemsController < ApplicationController
     end
   end
 
+  def private_message
+    logger.debug params.inspect
+    logger.debug "addtional info#{current_user.id}"
+    @message = Message.create(:subject => params[:subject], :body => params[:body], :message_from => current_user.id, :message_to => params[:reporter_id], :commentable_id => params[:id].to_i) 
+    if @message.save
+      logger.debug "Saved"
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end

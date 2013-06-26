@@ -1,7 +1,5 @@
 ILostUfound::Application.routes.draw do
 
-  # get "activities/index"
-
   devise_for :users
   resources :users do 
     resources :activities, :only => [:index] do
@@ -9,6 +7,7 @@ ILostUfound::Application.routes.draw do
         put 'profile_picture_upload'
       end
     end
+    resources :messages, :only =>[:index,:show,:destroy]
     resources :found_items do
       member do
         post 'comments'
@@ -25,6 +24,7 @@ ILostUfound::Application.routes.draw do
         post 'lock_item'
         post 'reply'
         get  'reply'
+        post 'private_message'
       end
     end
   end

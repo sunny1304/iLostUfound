@@ -1,5 +1,6 @@
 %p{:id => "login"} 
 	Last Login at : #{time_tag @last_login}
+= link_to "Check your messages", user_messages_path(current_user.id)	
 
 %p	
 	You have reported #{@lost_report_count} lost item#{(@lost_report_count > 1)? "s" : ""} & #{@found_report_count} found item#{(@found_report_count > 1)? "s" : "" }

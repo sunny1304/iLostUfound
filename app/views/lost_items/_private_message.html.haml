@@ -1,0 +1,9 @@
+= form_tag(private_message_user_lost_item_path(current_user,lost_item),:remote => true, :method => :post ) do
+	= label_tag :Subject
+	= text_field_tag :subject
+	%br/
+	= label_tag :Message
+	= text_area_tag  :private_message_body
+	= hidden_field_tag :reporter_id,lost_item.user_id
+	%br/
+	= submit_tag "Submit", :class => "btn btn-primary"

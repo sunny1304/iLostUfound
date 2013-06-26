@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  subject: MyString
+  body: MyString
+  from: 1
+  to: 1
+  read_at: 2013-06-26 00:38:11
+  read: false
+  commentable_type: MyString
+  commentable_id: 1
+
+two:
+  subject: MyString
+  body: MyString
+  from: 1
+  to: 1
+  read_at: 2013-06-26 00:38:11
+  read: false
+  commentable_type: MyString
+  commentable_id: 1

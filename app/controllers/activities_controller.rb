@@ -33,4 +33,10 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def get_private_messages
+    if user_signed_in?
+      @private_messages = Message.where("id =?",current_user.id)
+    end
+  end
+
 end

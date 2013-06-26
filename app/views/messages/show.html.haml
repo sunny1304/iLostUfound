@@ -1,0 +1,5 @@
+%div
+	= label_tag :Subject
+	= text_field_tag :subject, @message.subject, :readonly=> true
+	= label_tag :Message
+	= text_area_tag :message, @message.body, :readonly => true

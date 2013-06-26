@@ -1,0 +1,15 @@
+%div.message_index= render :partial => "index", :locals => {:messages_inbox=>@messages_inbox,:messages_sent => @messages_sent, :messages_unread => @messages_unread }
+
+
+:javascript
+	$(function(){
+		$(".private_message").on('click',function(){
+			var url = $(this).attr('message_path');
+			// console.log(url);
+			$("#show_sent_message").load(url,function(){
+				var show_data = $("#show_sent_message").html();
+				$(".message_count").html("You have #{@messages_unread.count-1} message");
+				$.fancybox(show_data);
+			});
+		});
+	});

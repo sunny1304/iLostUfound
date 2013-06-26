@@ -1,19 +1,27 @@
-%div.message_index= render :partial => "index", :locals => {:messages_inbox=>@messages_inbox,:messages_sent => @messages_sent, :messages_unread => @messages_unread }
+%p.message_count= render :partial => "message_count", :locals => {:messages_unread => @messages_unread}
 
+
+%div.message_index= render :partial => "index", :locals => {:messages_inbox=>@messages_inbox,:messages_sent => @messages_sent}
 
 :javascript
 	$(function(){
 		$(document).on('click',".private_message",function(){
 			var url = $(this).attr('message_path');
 			var check_new = $(this).attr('new');
-			// console.log(url);
-			if (typeof check_new !== 'undefined' && check_new !== false){
-					$(".message_count").html("You have #{(@messages_unread >0)? (@messages_unread -1) : @messages_unread} unread message");
-				};
-			$("#show_sent_message").load(url,function(){
-				var show_data = $("#show_sent_message").html();
+			var message_id = $(this).attr('id');
+
+			$("#show_sent_message").load(url,function(response,status, xhr){
 				
+				var show_data = $("#show_sent_message").html();
+				if (typeof(check_new) !== 'undefined'){
+
+					$.get("#{private_message_count_user_messages_path(current_user.id)}",function(data){
+
+						$(".message_count").html("You have "+ data.messages_unread +" unread message");
+					});
+				};
 				$.fancybox(show_data);
+				
+				});
 			});
 		});
-	});

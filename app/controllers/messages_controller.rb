@@ -30,4 +30,10 @@ class MessagesController < ApplicationController
         format.js
       end
     end
+    
+    def private_message_count
+      @messages_unread = Message.where("message_to=?", params[:user_id]).unread.count
+      render :json => {:messages_unread => @messages_unread}
+    end
+
 end

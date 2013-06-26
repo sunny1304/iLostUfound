@@ -7,7 +7,11 @@ ILostUfound::Application.routes.draw do
         put 'profile_picture_upload'
       end
     end
-    resources :messages, :only =>[:index,:show,:destroy]
+    resources :messages, :only =>[:index,:show,:destroy] do
+      collection do
+        get 'private_message_count'
+      end
+    end
     resources :found_items do
       member do
         post 'comments'

@@ -1,4 +1,9 @@
 %div
+	= label_tag :From
+	= text_field_tag :from, User.find(@message.message_from).email, :readonly => true
+	%br/
+	Sent at:
+	= time_tag(@message.created_at,:format => "%B %d, %Y")
 	= label_tag :Subject
 	= text_field_tag :subject, @message.subject, :readonly=> true
 	= label_tag :Message

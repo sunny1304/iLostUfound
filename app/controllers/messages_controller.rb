@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
 
   	def show
   		@message = Message.find(params[:id])
-  		if !@message.read && current_user.id != @message.message_from
+  		if !@message.read
   			@message.read_at = Time.now 
   			@message.read = true
   			@message.save!

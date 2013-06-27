@@ -3,7 +3,8 @@
 	-if @messages_inbox.present?
 		- messages_inbox.each do |message|
 			%tr
-				%td{:style =>"width:250px;"}= link_to (!message.read)?  "(new)#{message.subject}" : message.subject, "javascript:void(0)", :id => message.id, :class => 'private_message', :message_path => user_message_path(current_user.id,message.id), :new => ("new_message" if !message.read)
+				%td{:style =>"width:250px;"}= link_to (!message.read)?  "(new) #{message.subject}" : message.subject, "javascript:void(0)", :id => message.id, :class => 'private_message', :message_path => user_message_path(current_user.id,message.id), :new => ("new_message" if !message.read)
+				
 	
 				%td= link_to "delete",user_message_path(current_user.id,message.id),:method => :delete, :data => {:confirm => "Are You sure?"}, :remote => true
 

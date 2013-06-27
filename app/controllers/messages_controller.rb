@@ -1,16 +1,16 @@
 class MessagesController < ApplicationController
 	before_filter :authenticate_user!
 	def index
-  		@messages_inbox = Message.where('message_to =?',current_user.id).order("id desc")
-  		@messages_sent  = Message.where('message_from =?',current_user.id).order("id desc")
+  		@messages_inbox  = Message.where('message_to =?',current_user.id).kept_by_receiver.order("id desc")
+  		@messages_sent   = Message.where('message_from =?',current_user.id).kept_by_sender.order("id desc")
   		@messages_unread = @messages_inbox.unread.count
   	end
 
   	def show
   		@message = Message.find(params[:id])
-  		if !@message.read
+  		if !@message.read && @message.message_to.eql?(current_user.id)
   			@message.read_at = Time.now 
-  			@message.read = true
+  			@message.read    = true
   			@message.save!
   		end
   		render :layout=>false
@@ -19,11 +19,19 @@ class MessagesController < ApplicationController
 
     def destroy
       @message = Message.find(params[:id])
-      @message.destroy
+      if @message.message_to.eql?(current_user.id)
+        @message.delete_by_receiver = true
+        @message.save
+      end
+      
+      if @message.message_from.eql?(current_user.id)
+        @message.delete_by_sender = true
+        @message.save
+      end
 
-      @messages_inbox = Message.where('message_to =?',current_user.id).order("id desc")
-      @messages_sent  = Message.where('message_from =?',current_user.id).order("id desc")
-      @messages_unread = @messages_inbox.unread.count
+      @messages_inbox = Message.where('message_to =?',current_user.id).kept_by_receiver.order("id desc")
+      @messages_sent  = Message.where('message_from =?',current_user.id).kept_by_sender.order("id desc")
+      @messages_unread = @messages_inbox.unread.kept_by_receiver.count
 
       respond_to do |format|
         format.html{redirect_to user_messages_path(current_user.id)}

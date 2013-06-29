@@ -22,11 +22,13 @@ class MessagesController < ApplicationController
       if @message.message_to.eql?(current_user.id)
         @message.delete_by_receiver = true
         @message.save
+        logger.debug @message.delete_by_receiver
       end
       
       if @message.message_from.eql?(current_user.id)
         @message.delete_by_sender = true
         @message.save
+        logger.debug @message.delete_by_sender
       end
 
       @messages_inbox = Message.where('message_to =?',current_user.id).kept_by_receiver.order("id desc")
